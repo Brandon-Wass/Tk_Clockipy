@@ -27,3 +27,5 @@ When the program is finished, the Pygame library is quit with the pygame.quit() 
 You can use your own alarm .wav sound.
 
 Consumes roughly 18%-25% CPU on a Raspberry Pi 4B
+
+Optimizations will be made in further updates to use as little system resources as possible while retaining the same functionalities.
