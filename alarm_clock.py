@@ -12,14 +12,20 @@ game_display = pygame.display.set_mode((display_width,display_height))
 pygame.display.set_caption('Alarm Clock')
 font_size = 50
 font = pygame.font.SysFont('freesansbold.ttf', font_size)
-
-# Set alarm time
-alarm_times = []
+stop_font = pygame.font.SysFont('freesansbold.ttf', 24)
+delete_font = pygame.font.SysFont('freesansbold.ttf', 16)
 
 # Set loop variables
-done = False
+submit_text = font.render('Submit', True, (255, 0, 255))
+stop_surface = stop_font.render('Stop', True, (255, 0, 0))
+delete_surface = delete_font.render('Delete', True, (255, 0, 0))
 alarm_sound = pygame.mixer.Sound('/home/pi/alarm_clock/alarm.wav')
+alarm_sound.set_volume(0.25)
+border_color = (255, 0, 255)
+done = False
 alarms_playing = {}  # use a dictionary to keep track of which alarms are playing
+alarm_times = []
+clock = pygame.time.Clock()
 
 # Input field variables
 input_pos = (display_width // 2, display_height // 2 - 250)
@@ -39,21 +45,12 @@ alarm_pos = (display_width // 2 - 30, display_height // 2 - 170)
 alarm_texts = []
 
 # Stop button variables
-stop_text_size = 24
-stop_font = pygame.font.SysFont('freesansbold.ttf', stop_text_size)
-stop_surface = stop_font.render('Stop', True, (255,0,0))
 stop_pos_template = (submit_pos[0] + 30, submit_pos[1] + 40)  # separate stop buttons for each alarm
 stop_size = (submit_width // 2 - 15, submit_height // 2 - 10)  # set the stop button size to half the submit button size
 
 # Delete button variables
-delete_font_size = 16
-delete_font = pygame.font.SysFont('freesansbold.ttf', delete_font_size)
-delete_surface = delete_font.render('Delete', True, (255, 0, 0))
 delete_pos_template = (submit_pos[0] - submit_width // 2 + 79, submit_pos[1] + 55)  # separate delete buttons for each alarm
 delete_size = stop_size  # set the delete button size to the stop button size
-
-# Define the border color
-border_color = (255,0,255)
 
 # Main Loop
 while not done:
@@ -79,7 +76,6 @@ while not done:
     pygame.draw.rect(game_display, border_color, input_rect, 2) # Draw a border around the input field
     
     # Display submit button
-    submit_text = font.render('Submit', True, (255,0,255))
     submit_rect = submit_text.get_rect(center=submit_pos)
     game_display.blit(submit_text, submit_rect)
     pygame.draw.rect(game_display, border_color, submit_rect, 2) # Draw a border around the submit button
@@ -139,6 +135,7 @@ while not done:
                     
     # Update display
     pygame.display.update()
+    clock.tick(16)
     
 # Quit Pygame
 pygame.quit() 
