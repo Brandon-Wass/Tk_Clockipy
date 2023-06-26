@@ -25,3 +25,5 @@ When the program is finished, the Pygame library is quit with the pygame.quit() 
 ------------------------
 
 You can use your own alarm .wav sound.
+
+Optimizations made to lower the resource usage. Resource usage is now negligibly low, running 0%-2%, on a Raspberry Pi 4B.
