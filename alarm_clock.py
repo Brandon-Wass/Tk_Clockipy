@@ -1,6 +1,17 @@
+#!/usr/bin/python3
+
 # Import necessary libraries
 import pygame
 import time
+import os
+
+# Function to find the alarm.wav file
+def find_alarm_file():
+    for root, dirs, files in os.walk('/'):
+        for file in files:
+            if file.endswith('alarm.wav'):
+                return os.path.join(root, file)
+    raise FileNotFoundError("alarm.wav file not found")
 
 # Initialize Pygame
 pygame.init()
@@ -19,8 +30,9 @@ delete_font = pygame.font.SysFont('freesansbold.ttf', 16)
 submit_text = font.render('Submit', True, (255, 0, 255))
 stop_surface = stop_font.render('Stop', True, (255, 0, 0))
 delete_surface = delete_font.render('Delete', True, (255, 0, 0))
-alarm_sound = pygame.mixer.Sound('/home/pi/alarm_clock/alarm.wav')
-alarm_sound.set_volume(0.25)
+alarm_file_path = find_alarm_file()
+alarm_sound = pygame.mixer.Sound(alarm_file_path)
+alarm_sound.set_volume(1)
 border_color = (255, 0, 255)
 done = False
 alarms_playing = {}  # use a dictionary to keep track of which alarms are playing
