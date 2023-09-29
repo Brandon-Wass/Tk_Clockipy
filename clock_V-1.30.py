@@ -157,6 +157,8 @@ class Clock(tk.Tk):
     def stop_sound(self):
         if self.sound_process and self.sound_process.poll() is None:  # Check if process is still running
             self.sound_process.terminate()
+        self.alarm_time = None  # delete the alarm
+        self.update_alarm_display()  # update the display
 
     def alarm_rings(self):
         sound_thread = threading.Thread(target=self.play_sound)
