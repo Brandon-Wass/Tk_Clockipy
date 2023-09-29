@@ -53,13 +53,13 @@ class Clock(tk.Tk):
     def draw_alarm_display_and_buttons(self):
         # Display for alarm time
         self.alarm_display = tk.Label(self.canvas, text="--:--", font=('Arial', 20, 'bold'), bg="black", fg="purple")
-        self.alarm_display.place(x=self.screen_width - 282, y=300, anchor="e")
+        self.alarm_display.place(x=self.screen_width - 282, y=((self.screen_height // 2) - 100), anchor="e")
 
         # Buttons for setting the alarm
         self.hour_button = tk.Button(self.canvas, text="Set Hour", command=self.set_alarm_hour, 
                              fg="purple", bg="black", activebackground="black", activeforeground="purple", 
                              width=10, height=5, highlightbackground="purple", bd=4, relief=tk.FLAT)
-        self.hour_button.place(x=self.screen_width - 530, y=430, anchor="e")
+        self.hour_button.place(x=self.screen_width, y=230, anchor="e")
 
         self.minute_button = tk.Button(self.canvas, text="Set Minute", command=self.set_alarm_minute, 
                                fg="purple", bg="black", activebackground="black", activeforeground="purple", 
