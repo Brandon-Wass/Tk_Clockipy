@@ -136,6 +136,15 @@
         self.minute_button = tk.Button(self.canvas, text="Set Minute", command=self.set_alarm_minute, bg="black",  fg="purple", width=10, height=5)
         self.minute_button.place(x=self.screen_width, y=430, anchor="e")
      ```
+## Possible changes:
+
+  - Adding the current digital time below the clock for users who prefer a numerical representation.
+
+
+  - A settings menu to customize the clock's look, e.g., colors, fonts, or locations.
+
+
+  - Adding a date display (e.g., "Monday, September 29").
 
 ## Contributing:
 
