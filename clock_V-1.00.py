@@ -30,9 +30,6 @@ class Clock(tk.Tk):
         # Close the program by clicking anywhere on the window
         self.canvas.bind("<Button-1>", lambda e: self.destroy())
 
-        # Initial alarm time to None (no alarm)
-        self.alarm_time = None
-
         self.update_clock()
 
     # Separate static elements drawing
@@ -68,7 +65,6 @@ class Clock(tk.Tk):
         self.draw_hand(minute_coords, "purple", int(radius/66), "hand")
         self.draw_hand(hour_coords, "purple", int(radius/33), "hand")
 
-        self.check_alarm(current_time)
         self.update_id = self.after(1000, self.update_clock)  # Update every 1 second for better performance
 
     def draw_hand(self, coord, color, width, tag=None):
