@@ -4,7 +4,6 @@ import tkinter as tk
 import tkinter.simpledialog as simpledialog
 import time
 import math
-import tkinter.messagebox as messagebox
 
 class Clock(tk.Tk):
     def __init__(self):
@@ -26,24 +25,6 @@ class Clock(tk.Tk):
         # Compute radius directly in the __init__ method
         center_x, center_y = self.screen_width / 2, self.screen_height / 2
         radius = min(center_x, center_y) - 50
-
-        # Close the program by clicking anywhere on the window
-        self.canvas.bind("<Button-1>", lambda e: self.destroy())
-
-        
-        # Initial alarm time to None (no alarm)
-        self.alarm_time = None
-        
-        # Display for alarm time
-        self.alarm_display = tk.Label(self.canvas, text="--:--", font=('Arial', 20, 'bold'), bg="black", fg="white")
-        self.alarm_display.place(x=self.screen_width - 10, y=50, anchor="e")
-
-        # Buttons for setting the alarm
-        self.hour_button = tk.Button(self.canvas, text="Set Hour", command=self.set_alarm_hour, bg="white", width=10, height=5)
-        self.hour_button.place(x=self.screen_width, y=200, anchor="e")
-
-        self.minute_button = tk.Button(self.canvas, text="Set Minute", command=self.set_alarm_minute, bg="white", width=10, height=5)
-        self.minute_button.place(x=self.screen_width, y=300, anchor="e")
 
         self.update_clock()
 
@@ -105,36 +86,6 @@ class Clock(tk.Tk):
 
         self.check_alarm(current_time)
         self.update_id = self.after(10, self.update_clock)  # Update every 1 second
-
-    def set_alarm_hour(self):
-        if self.alarm_time is None:
-            self.alarm_time = [0, 0]
-        
-        self.alarm_time[0] = (self.alarm_time[0] + 1) % 24
-        self.update_alarm_display()
-
-    def set_alarm_minute(self):
-        if self.alarm_time is None:
-            self.alarm_time = [0, 0]
-
-        self.alarm_time[1] = (self.alarm_time[1] + 1) % 60
-        self.update_alarm_display()
-
-    def update_alarm_display(self):
-        if self.alarm_time:
-            self.alarm_display.config(text=f"{self.alarm_time[0]:02}:{self.alarm_time[1]:02}")
-        else:
-            self.alarm_display.config(text="--:--")
-
-    def check_alarm(self, current_time):
-        if self.alarm_time:
-            if (current_time.tm_hour == self.alarm_time[0] and current_time.tm_min == self.alarm_time[1] and current_time.tm_sec == 0):
-                self.alarm_rings()
-
-    def alarm_rings(self):
-        print("Alarm rings!")
-        response = messagebox.showinfo("Alarm", "Press OK button\nto close window!")
-        pass
 
 def cleanup_on_exit(self, event):
     self.after_cancel(self.update_id)
