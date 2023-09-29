@@ -13,8 +13,6 @@ class Clock(tk.Tk):
     def __init__(self):
         super().__init__()
 
-        self.setup_gpio()
-
         # Set window to fullscreen
         self.attributes('-fullscreen', True)
         
