@@ -36,14 +36,14 @@
 
   1. **Clone the repository and navigate to the directory**:
 
-  ```bash
+  ```
   git clone https://github.com/B-Boone/Alarm_Clock
   cd Alarm_Clock
   ```
 
   2. **Install dependencies**:
 
-  ```bash
+  ```
   pip3 install tkinter
   ```
 
@@ -52,36 +52,28 @@
   1. **Run the Application**:
    
     V-1.00
-
-
-    ```bash
+    ```
     python3 clock_V-1.00.py
     ```
   ![2023-09-29-112542_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/4300af78-4376-4d57-8db2-e8a3c194d26f)
 
 
     V-1.10
-
-
-    ```bash
+    ```
     python3 clock_V-1.10.py
     ```
   ![2023-09-29-115625_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/065845a4-a0ba-44df-9b39-90639c432f59)
 
 
     V-1.20
-
-
-    ```bash
+    ```
     python3 clock_V-1.20.py
     ```
   ![2023-09-29-114654_640x480_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/1a1fb150-cc61-48be-96fe-14b0fbe9dc59)
 
 
     V-1.30
-
-
-    ```bash
+    ```
     python3 clock_V-1.30.py
     ```
   ![2023-09-29-115719_800x480_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/3639c7f4-7d92-447a-9ac9-791f3278707e)
@@ -116,7 +108,7 @@
   
     EDIT x= and y=:
      
-     ```bash
+     ```
         # Display for alarm time
         self.alarm_display = tk.Label(self.canvas, text="--:--", font=('Arial', 20, 'bold'), bg="black", fg="white")
         self.alarm_display.place(x=self.screen_width - 10, y=50, anchor="e")
@@ -131,7 +123,7 @@
      
   **EXAMPLE**:
   
-     ```bash
+     ```
         # Display for alarm time
         self.alarm_display = tk.Label(self.canvas, text="--:--", font=('Arial', 20, 'bold'), bg="black", fg="purple")
         self.alarm_display.place(x=self.screen_width - 686, y=430, anchor="e")
