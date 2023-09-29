@@ -36,9 +36,6 @@ class Clock(tk.Tk):
         self.alarm_time = None
 
         self.update_clock()
-        
-        alarm_thread = threading.Thread(target=self.update_alarm_display)
-        alarm_thread.start()
 
     def setup_gpio(self):
         GPIO.setwarnings(False)
