@@ -52,7 +52,8 @@
   1. **Run the Application**:
    
     V-1.00
-  
+
+
     ```bash
     python3 clock_V-1.00.py
     ```
@@ -60,7 +61,8 @@
 
 
     V-1.10
-  
+
+
     ```bash
     python3 clock_V-1.10.py
     ```
@@ -68,7 +70,8 @@
 
 
     V-1.20
-  
+
+
     ```bash
     python3 clock_V-1.20.py
     ```
@@ -76,7 +79,8 @@
 
 
     V-1.30
-  
+
+
     ```bash
     python3 clock_V-1.30.py
     ```
