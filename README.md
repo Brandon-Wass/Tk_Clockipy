@@ -40,22 +40,22 @@ cd Alarm_Clock
    
   V-1.00
   ```bash
-  python3 clock_base.py
+  python3 clock_V-1.00.py
   ```
 
   V-1.10
   ```bash
-  python3 alarm_clock_base.py
+  python3 clock_V-1.10.py
   ```
 
   V-1.20
   ```bash
-  python3 alarm_clock_gpio.py
+  python3 clock_V-1.20.py
   ```
 
   V-1.30
   ```bash
-  python3 alarm_clock_audio.py
+  python3 clock_V-1.30.py
   ```
 
 2. **Set the Alarm**: Click the 'Set Hour' and 'Set Minute' buttons to set the alarm.
