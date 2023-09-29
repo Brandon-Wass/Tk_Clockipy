@@ -3,6 +3,11 @@
 A simple fullscreen digital clock built with Python's `tkinter` module. Apart from just telling the time, the clock also has a basic alarm feature.
 
 ## Features:
+- **4 Versions**:
+  V-1.01: Round clock.
+  v-1.02: Round clock with alarm.
+  v-1.03: Round clock with GPIO Buzzer alarm.
+  v-1.04: Round clock with audio file.
 - **Fullscreen Clock**: Display time in a frameless window mode.
 - **Interactive**: Click anywhere on the screen to close the application.
 - **Set Alarm**: Incremental buttons to set hours and minutes for the alarm.
@@ -23,9 +28,13 @@ cd Alarm_Clock
 1. **Run the Application**:
   V-1.01
   ```bash
-  python3 alarm_clock_base.py
+  python3 clock_base.py
   ```
   V-1.02
+  ```bash
+  python3 alarm_clock_base.py
+  ```
+  V-1.03
   ```bash
   python3 alarm_clock_gpio.py
   ```
