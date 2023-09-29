@@ -38,7 +38,7 @@ class Clock(tk.Tk):
         radius = min(center_x, center_y) - 50
 
         # Draw the clock circle
-        self.canvas.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, fill="black", outline="purple")
+        self.canvas.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, fill="black", outline="white")
         
         # Draw static marks and numbers
         self.draw_marks()
@@ -61,9 +61,9 @@ class Clock(tk.Tk):
 
         # Delete and re-draw hands
         self.canvas.delete("hand")  # We tag the hands with "hand" to delete them specifically
-        self.draw_hand(second_coords, "purple", int(radius/100), "hand")
-        self.draw_hand(minute_coords, "purple", int(radius/66), "hand")
-        self.draw_hand(hour_coords, "purple", int(radius/33), "hand")
+        self.draw_hand(second_coords, "red", int(radius/100), "hand")
+        self.draw_hand(minute_coords, "blue", int(radius/66), "hand")
+        self.draw_hand(hour_coords, "green", int(radius/33), "hand")
 
         self.update_id = self.after(1000, self.update_clock)  # Update every 1 second for better performance
 
@@ -80,11 +80,11 @@ class Clock(tk.Tk):
             if i % 5 == 0:  # Hour marks
                 start = (center_x + (radius - 15) * math.cos(angle), center_y + (radius - 15) * math.sin(angle))
                 end = (center_x + radius * math.cos(angle), center_y + radius * math.sin(angle))
-                self.canvas.create_line(start[0], start[1], end[0], end[1], width=6, fill="purple")
+                self.canvas.create_line(start[0], start[1], end[0], end[1], width=6, fill="white")
             else:  # Second marks
                 start = (center_x + (radius - 5) * math.cos(angle), center_y + (radius - 5) * math.sin(angle))
                 end = (center_x + radius * math.cos(angle), center_y + radius * math.sin(angle))
-                self.canvas.create_line(start[0], start[1], end[0], end[1], width=3, fill="purple")
+                self.canvas.create_line(start[0], start[1], end[0], end[1], width=3, fill="white")
 
     def draw_numbers(self):
         center_x, center_y = self.screen_width / 2, self.screen_height / 2
@@ -93,7 +93,7 @@ class Clock(tk.Tk):
         for i in range(1, 13):
             angle = math.radians(i * 30 - 90)
             coord = (center_x + (radius - 30) * math.cos(angle), center_y + (radius - 30) * math.sin(angle))
-            self.canvas.create_text(coord[0], coord[1], text=str(i), font=('Arial', int(radius/10), 'bold'), fill="purple")
+            self.canvas.create_text(coord[0], coord[1], text=str(i), font=('Arial', int(radius/10), 'bold'), fill="white")
 
     def cleanup_on_exit(self):
         self.after_cancel(self.update_id)
