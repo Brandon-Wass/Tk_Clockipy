@@ -152,7 +152,7 @@ class Clock(tk.Tk):
                 self.alarm_rings()
 
     def play_sound(self):
-        self.sound_process = subprocess.Popen(['aplay', './alarm.wav'])  # Ensure 'alarm.wav' is in the current directory or provide an absolute path
+        self.sound_process = subprocess.Popen(['cd', 'Alarm_Clock', '&&', 'aplay', 'alarm.wav'])  # Ensure 'alarm.wav' is in the current directory or provide an absolute path
 
     def stop_sound(self):
         if self.sound_process and self.sound_process.poll() is None:  # Check if process is still running
