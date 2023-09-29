@@ -47,6 +47,13 @@
   pip3 install tkinter
   ```
 
+  3. **Move alarm.wav file to home directory**: Only for V-1.30 (audio version)
+
+  ```
+  mv ~/Alarm_Clock/alarm.wav ~
+  ```
+
+
 ## How to Use: 
 
   1. **Run the Application**:
