@@ -41,7 +41,7 @@ class Clock(tk.Tk):
         radius = min(center_x, center_y) - 50
 
         # Draw the clock circle
-        self.canvas.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, fill="black", outline="purple")
+        self.canvas.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, fill="black", outline="white")
         
         # Draw static marks and numbers
         self.draw_marks()
@@ -52,18 +52,18 @@ class Clock(tk.Tk):
 
     def draw_alarm_display_and_buttons(self):
         # Display for alarm time
-        self.alarm_display = tk.Label(self.canvas, text="--:--", font=('Arial', 20, 'bold'), bg="black", fg="purple")
+        self.alarm_display = tk.Label(self.canvas, text="--:--", font=('Arial', 20, 'bold'), bg="black", fg="white")
         self.alarm_display.place(x=self.screen_width - 282, y=((self.screen_height // 2) - 100), anchor="e")
 
         # Buttons for setting the alarm
         self.hour_button = tk.Button(self.canvas, text="Set Hour", command=self.set_alarm_hour, 
-                             fg="purple", bg="black", activebackground="black", activeforeground="purple", 
-                             width=10, height=5, highlightbackground="purple", bd=4, relief=tk.FLAT)
+                             fg="white", bg="black", activebackground="black", activeforeground="white", 
+                             width=10, height=5, highlightbackground="white", bd=4, relief=tk.FLAT)
         self.hour_button.place(x=self.screen_width, y=230, anchor="e")
 
         self.minute_button = tk.Button(self.canvas, text="Set Minute", command=self.set_alarm_minute, 
-                               fg="purple", bg="black", activebackground="black", activeforeground="purple", 
-                               width=10, height=5, highlightbackground="purple", bd=4, relief=tk.FLAT)
+                               fg="white", bg="black", activebackground="black", activeforeground="white", 
+                               width=10, height=5, highlightbackground="white", bd=4, relief=tk.FLAT)
         self.minute_button.place(x=self.screen_width, y=430, anchor="e")
 
     def update_clock(self):
@@ -83,9 +83,9 @@ class Clock(tk.Tk):
 
         # Delete and re-draw hands
         self.canvas.delete("hand")  # We tag the hands with "hand" to delete them specifically
-        self.draw_hand(second_coords, "purple", int(radius/100), "hand")
-        self.draw_hand(minute_coords, "purple", int(radius/66), "hand")
-        self.draw_hand(hour_coords, "purple", int(radius/33), "hand")
+        self.draw_hand(second_coords, "red", int(radius/100), "hand")
+        self.draw_hand(minute_coords, "blue", int(radius/66), "hand")
+        self.draw_hand(hour_coords, "green", int(radius/33), "hand")
 
         self.check_alarm(current_time)
         self.update_id = self.after(1000, self.update_clock)  # Update every 1 second for better performance
@@ -103,11 +103,11 @@ class Clock(tk.Tk):
             if i % 5 == 0:  # Hour marks
                 start = (center_x + (radius - 15) * math.cos(angle), center_y + (radius - 15) * math.sin(angle))
                 end = (center_x + radius * math.cos(angle), center_y + radius * math.sin(angle))
-                self.canvas.create_line(start[0], start[1], end[0], end[1], width=6, fill="purple")
+                self.canvas.create_line(start[0], start[1], end[0], end[1], width=6, fill="white")
             else:  # Second marks
                 start = (center_x + (radius - 5) * math.cos(angle), center_y + (radius - 5) * math.sin(angle))
                 end = (center_x + radius * math.cos(angle), center_y + radius * math.sin(angle))
-                self.canvas.create_line(start[0], start[1], end[0], end[1], width=3, fill="purple")
+                self.canvas.create_line(start[0], start[1], end[0], end[1], width=3, fill="white")
 
     def draw_numbers(self):
         center_x, center_y = self.screen_width / 2, self.screen_height / 2
@@ -116,7 +116,7 @@ class Clock(tk.Tk):
         for i in range(1, 13):
             angle = math.radians(i * 30 - 90)
             coord = (center_x + (radius - 30) * math.cos(angle), center_y + (radius - 30) * math.sin(angle))
-            self.canvas.create_text(coord[0], coord[1], text=str(i), font=('Arial', int(radius/10), 'bold'), fill="purple")
+            self.canvas.create_text(coord[0], coord[1], text=str(i), font=('Arial', int(radius/10), 'bold'), fill="white")
 
     def set_alarm_hour(self):
         if self.alarm_time is None:
