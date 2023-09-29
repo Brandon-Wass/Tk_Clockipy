@@ -1,29 +1,89 @@
-# Alarm_Clock
+# Fullscreen Clock with Alarm
 
-This is a Python script for an Alarm Clock program using Pygame library. The program allows users to input multiple alarm times, displays the current time, and plays alarm sound when the inputted time matches the current time.
+A simple fullscreen digital clock built with Python's `tkinter` module. Apart from just telling the time, the clock also has a basic alarm feature.
 
-The program creates a Pygame window with a display width of 200 and display height of 600. The font size for the texts displayed is set to 50 and the font used is 'freesansbold.ttf'.
+## Features:
+- **Fullscreen Clock**: Display time in a frameless window mode.
+- **Interactive**: Click anywhere on the screen to close the application.
+- **Set Alarm**: Incremental buttons to set hours and minutes for the alarm.
+- **Visual Alarm**: A pop-up notification appears when the alarm rings.
 
-The program uses the time library to get the current time and the pygame.mixer.Sound() function to play the alarm sound, which is located at '/home/pi/alarm_clock/alarm.wav'.
+## Prerequisites:
+- Python 3.x
+- `tkinter` module (typically comes pre-packaged with Python standard distributions).
 
-The input field is in the center of the window, with a width of 160 and height of 40. The submit button is located below the input field, centered, with a width of 100 and a height of 50.
+## Installation:
+Clone the repository and navigate to the directory:
+```bash
+git clone https://github.com/B-Boone/Alarm_Clock
+cd Alarm_Clock
+```
 
-The alarm times are displayed below the submit button, with a maximum of one alarm per row. The stop and delete buttons are placed beside each alarm time display.
+## How to Use: 
+1. **Run the Application**:
+  V-1.01
+  ```bash
+  python3 alarm_clock_base.py
+  ```
+  V-1.02
+  ```bash
+  python3 alarm_clock_gpio.py
+  ```
+  V-1.03
+  ```bash
+  python3 alarm_clock_audio.py
+  ```
 
-The stop button is located on the right side of the Pygame window while delete button on the left side.
+2. **Set the Alarm**: Click the 'Set Hour' and 'Set Minute' buttons to set the alarm.
+3. **Exit**: Click anywhere on the clock to exit the program.
+4. **Alarm Notification**: A pop-up will appear when the alarm rings. Press the "OK" button to close the notification and stop the alarm.
 
-When the program is run, it starts the Pygame window and initializes the program by starting the Pygame library. It then declares variables and objects that are used throughout the program, such as the Pygame display, font, input field, submit button, and alarm sounds.
+## Structure:
+- **Clock Class**: Inherits from `tk.Tk`.
+  - Has methods to draw the clock hands, hour marks, numbers, and check the alarm.
+  - Contains button commands to set the alarm hour and minute.
+- **cleanup_on_exit**: A function to handle the cleanup process on exit.
 
-The "main loop" of the program is executed until a QUIT Pygame event is triggered, that is, the user closes the Pygame window. During each iteration of the main loop, the program clears the Pygame display, gets the current time, and checks if any alarm time matches the current time and if the alarm is not already playing. If an alarm time matches the current time, the function plays the alarm sound.
+## Customization: *Applies to all versions*
+- **Colors**: When you want to change the color scheme.
+  1. Search for every instance of the mention white.
+  2. Paying attention to what each mention of white affects, change to whatever color you'd like
+  3. Same applies when changing the background, just search for black instead.
+- **Locations**: When you need to adjust the buttons and alarm locations.
+  1. EDIT x= and y=:
+     ```bash
+        # Display for alarm time
+        self.alarm_display = tk.Label(self.canvas, text="--:--", font=('Arial', 20, 'bold'), bg="black", fg="white")
+        self.alarm_display.place(x=self.screen_width - 10, y=50, anchor="e")
 
-The program then displays the current time, the input field, the submit button, and all the inputted alarm times and their corresponding stop and delete buttons. The program also checks if any stop or delete buttons are clicked and if the submit button is clicked, an alarm time is added to the list of alarm times. If the input field is clicked by the user, it becomes active and can accept keyboard input. If the user types ENTER, the program adds the inputted text as an alarm time to the list and clears the input field. If the user types BACKSPACE, the program deletes the last character in the input field. If the user types any other keyboard key, the program adds it to the input field.
+        # Buttons for setting the alarm
+        self.hour_button = tk.Button(self.canvas, text="Set Hour", command=self.set_alarm_hour, bg="white", width=10, height=5)
+        self.hour_button.place(x=self.screen_width, y=200, anchor="e")
 
-Finally, during each iteration of the main loop, the program updates the Pygame display.
+        self.minute_button = tk.Button(self.canvas, text="Set Minute", command=self.set_alarm_minute, bg="white", width=10, height=5)
+        self.minute_button.place(x=self.screen_width, y=300, anchor="e")
+     ```
+- **EXAMPLE**:
+  
+     ```bash
+        # Display for alarm time
+        self.alarm_display = tk.Label(self.canvas, text="--:--", font=('Arial', 20, 'bold'), bg="black", fg="purple")
+        self.alarm_display.place(x=self.screen_width - 686, y=430, anchor="e")
 
-When the program is finished, the Pygame library is quit with the pygame.quit() function.
+        # Buttons for setting the alarm             # Added fg=
+        self.hour_button = tk.Button(self.canvas, text="Set Hour", command=self.set_alarm_hour, bg="black", fg="purple", width=10, height=5)
+        self.hour_button.place(x=self.screen_width -686, y=430, anchor="e")
 
-------------------------
+        self.minute_button = tk.Button(self.canvas, text="Set Minute", command=self.set_alarm_minute, bg="black",  fg="purple", width=10, height=5)
+        self.minute_button.place(x=self.screen_width, y=430, anchor="e")
+     ```
 
-You can use your own alarm .wav sound.
+## Contributing:
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Optimizations made to lower the resource usage. Resource usage is now negligibly low, running 0%-2%, on a Raspberry Pi 4B.
+## License:
+[MIT](https://choosealicense.com/licenses/mit/)
+
+---
+
+ENJOY!
