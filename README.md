@@ -90,6 +90,7 @@
   **Clock Class**: Inherits from `tk.Tk`.
   
     - Has methods to draw the clock hands, hour marks, numbers, and check the alarm.
+  
     - Contains button commands to set the alarm hour and minute.
 
   **cleanup_on_exit**: A function to handle the cleanup process on exit.
