@@ -9,7 +9,7 @@ A simple fullscreen digital clock built with Python's `tkinter` module. Apart fr
   V-1.00: Round clock. Customized for 1920x1080 resolution.
 
 
-  v-1.10: Round clock with alarm. Customized for 1920x1080 resolution.
+  v-1.10: Round clock with visual alarm. Customized for 1920x1080 resolution.
 
 
   v-1.20: Round clock with GPIO Buzzer alarm. Customized for Raspberry Pi with 640x480 resolution.
