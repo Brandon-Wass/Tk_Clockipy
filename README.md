@@ -99,7 +99,7 @@
 
   **Colors**: When you want to change the color scheme.
   
-    1. Search for every instance of the mention white(on base versions) or purple(on gpio or audio versions).
+    1. Search for every instance of the mention white, red, blue, and green(on base versions) or purple(on gpio or audio versions).
      
     2. Paying attention to what each mention of white or purple affects, change to whatever color you'd like
      
