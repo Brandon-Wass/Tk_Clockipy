@@ -1,153 +1,144 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
-# Import necessary libraries
-import pygame
+import tkinter as tk
+import tkinter.simpledialog as simpledialog
 import time
-import os
+import math
+import tkinter.messagebox as messagebox
 
-# Function to find the alarm.wav file
-def find_alarm_file():
-    for root, dirs, files in os.walk('/'):
-        for file in files:
-            if file.endswith('alarm.wav'):
-                return os.path.join(root, file)
-    raise FileNotFoundError("alarm.wav file not found")
+class Clock(tk.Tk):
+    def __init__(self):
+        super().__init__()
 
-# Initialize Pygame
-pygame.init()
+        # Set window to fullscreen
+        self.attributes('-fullscreen', True)
+        
+        # Wait for window to update and get screen dimensions
+        self.update_idletasks()
+        self.screen_width = self.winfo_screenwidth()
+        self.screen_height = self.winfo_screenheight()
+        
+        self.title("Clock")
+        self.overrideredirect(1)  # Frameless window
+        self.canvas = tk.Canvas(self, width=self.screen_width, height=self.screen_height, bg='black', highlightthickness=0, cursor="none")
+        self.canvas.pack(fill=tk.BOTH, expand=1)
 
-# Set display and font
-display_width = 200
-display_height = 600
-game_display = pygame.display.set_mode((display_width,display_height))
-pygame.display.set_caption('Alarm Clock')
-font_size = 50
-font = pygame.font.SysFont('freesansbold.ttf', font_size)
-stop_font = pygame.font.SysFont('freesansbold.ttf', 24)
-delete_font = pygame.font.SysFont('freesansbold.ttf', 16)
+        # Compute radius directly in the __init__ method
+        center_x, center_y = self.screen_width / 2, self.screen_height / 2
+        radius = min(center_x, center_y) - 50
 
-# Set loop variables
-submit_text = font.render('Submit', True, (255, 0, 255))
-stop_surface = stop_font.render('Stop', True, (255, 0, 0))
-delete_surface = delete_font.render('Delete', True, (255, 0, 0))
-alarm_file_path = find_alarm_file()
-alarm_sound = pygame.mixer.Sound(alarm_file_path)
-alarm_sound.set_volume(1)
-border_color = (255, 0, 255)
-done = False
-alarms_playing = {}  # use a dictionary to keep track of which alarms are playing
-alarm_times = []
-clock = pygame.time.Clock()
+        # Close the program by clicking anywhere on the window
+        self.canvas.bind("<Button-1>", lambda e: self.destroy())
 
-# Input field variables
-input_pos = (display_width // 2, display_height // 2 - 250)
-input_width = 160
-input_height = 40
-input_rect = pygame.Rect(input_pos[0] - input_width // 2, input_pos[1] - input_height // 2, input_width, input_height)
-input_text = ''
-input_active = True
+        
+        # Initial alarm time to None (no alarm)
+        self.alarm_time = None
+        
+        # Display for alarm time
+        self.alarm_display = tk.Label(self.canvas, text="--:--", font=('Arial', 20, 'bold'), bg="black", fg="white")
+        self.alarm_display.place(x=self.screen_width - 10, y=50, anchor="e")
 
-# Submit button variables
-submit_pos = (display_width // 2, display_height // 2 - 210)
-submit_width = 100
-submit_height = 50
+        # Buttons for setting the alarm
+        self.hour_button = tk.Button(self.canvas, text="Set Hour", command=self.set_alarm_hour, bg="white", width=10, height=5)
+        self.hour_button.place(x=self.screen_width, y=200, anchor="e")
 
-# Alarm time display variables
-alarm_pos = (display_width // 2 - 30, display_height // 2 - 170)
-alarm_texts = []
+        self.minute_button = tk.Button(self.canvas, text="Set Minute", command=self.set_alarm_minute, bg="white", width=10, height=5)
+        self.minute_button.place(x=self.screen_width, y=300, anchor="e")
 
-# Stop button variables
-stop_pos_template = (submit_pos[0] + 30, submit_pos[1] + 40)  # separate stop buttons for each alarm
-stop_size = (submit_width // 2 - 15, submit_height // 2 - 10)  # set the stop button size to half the submit button size
+        self.update_clock()
 
-# Delete button variables
-delete_pos_template = (submit_pos[0] - submit_width // 2 + 79, submit_pos[1] + 55)  # separate delete buttons for each alarm
-delete_size = stop_size  # set the delete button size to the stop button size
+    def draw_hand(self, coord, color, width):
+        center_x, center_y = self.screen_width / 2, self.screen_height / 2
+        self.canvas.create_line(center_x, center_y, coord[0], coord[1], fill=color, width=width)
 
-# Main Loop
-while not done:
-    # Clear screen
-    game_display.fill((0,0,0))
-    
-    # Get current time
-    current_time = time.strftime("%H:%M:%S")
-    
-    # Check if any alarm times are reached
-    for alarm_time in alarm_times:
-        if current_time == alarm_time and alarm_time not in alarms_playing:
-            alarms_playing[alarm_time] = True
-            alarm_sound.play(loops=-1)
-            
-    # Display current time
-    time_display = font.render(current_time, True, (255,0,255))
-    game_display.blit(time_display, (30, 0))
-    
-    # Display input field
-    input_surface = font.render(input_text, True, (255,0,255))
-    game_display.blit(input_surface, (input_rect.x + 5, input_rect.y + 5))
-    pygame.draw.rect(game_display, border_color, input_rect, 2) # Draw a border around the input field
-    
-    # Display submit button
-    submit_rect = submit_text.get_rect(center=submit_pos)
-    game_display.blit(submit_text, submit_rect)
-    pygame.draw.rect(game_display, border_color, submit_rect, 2) # Draw a border around the submit button
-    
-    # Display alarm times
-    alarm_texts.clear()
-    for i, alarm_time in enumerate(alarm_times):
-        alarm_text = font.render(alarm_time, True, (255,0,255))
-        alarm_rect = alarm_text.get_rect(center=(alarm_pos[0], alarm_pos[1] + i*40))
-        alarm_texts.append(alarm_text)
-        game_display.blit(alarm_text, alarm_rect)
-        pygame.draw.rect(game_display, border_color, alarm_rect, 2) # Draw a border around the alarm display
-        # Display stop button for this alarm
-        stop_pos = (stop_pos_template[0] + submit_width // 2, stop_pos_template[1] - 10 + i*40)
-        stop_rect = stop_surface.get_rect(center=stop_pos, size=stop_size)
-        stop_border_rect = pygame.Rect(stop_rect.x - 2, stop_rect.y - 2, stop_rect.width + 4, stop_rect.height + 4)
-        game_display.blit(stop_surface, stop_rect)
-        pygame.draw.rect(game_display, border_color, stop_border_rect, 2) # Draw a border around the stop button
-        # Display delete button for this alarm
-        delete_pos = (delete_pos_template[0] + submit_width // 2, delete_pos_template[1] - 10 + i*40)
-        delete_rect = delete_surface.get_rect(center=delete_pos, size=delete_size)
-        delete_border_rect = pygame.Rect(delete_rect.x - 2, delete_rect.y - 2, delete_rect.width + 4, delete_rect.height + 4)
-        game_display.blit(delete_surface, delete_rect)
-        pygame.draw.rect(game_display, border_color, delete_border_rect, 2) # Draw a border around the delete button
-        # Check if stop or delete button is clicked
-        if pygame.mouse.get_pressed()[0]:
-            if stop_rect.collidepoint(pygame.mouse.get_pos()) and alarm_time in alarms_playing:
-                alarms_playing.pop(alarm_time)
-                alarm_sound.stop()
-            elif delete_rect.collidepoint(pygame.mouse.get_pos()):
-                alarm_times.remove(alarm_time)
-                alarm_texts.pop(i)  #
+    def draw_marks(self):
+        center_x, center_y = self.screen_width / 2, self.screen_height / 2
+        radius = min(center_x, center_y) - 50
 
-    # Handle events
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            done = True
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            # Check if submit button was clicked
-            if submit_rect.collidepoint(event.pos):
-                alarm_times.append(input_text)
-                input_text = ''
-            # Check if input field was clicked
-            elif input_rect.collidepoint(event.pos):
-                input_active = True
-            else:
-                input_active = False
-        elif event.type == pygame.KEYDOWN:
-            if input_active:
-                if event.key == pygame.K_RETURN:
-                    alarm_times.append(input_text)
-                    input_text = ''
-                elif event.key == pygame.K_BACKSPACE:
-                    input_text = input_text[:-1]
-                else:
-                    input_text += event.unicode
-                    
-    # Update display
-    pygame.display.update()
-    clock.tick(16)
-    
-# Quit Pygame
-pygame.quit() 
+        for i in range(60):
+            angle = math.radians(i * 6 - 90)
+            if i % 5 == 0:  # Hour marks
+                start = (center_x + (radius - 15) * math.cos(angle), center_y + (radius - 15) * math.sin(angle))
+                end = (center_x + radius * math.cos(angle), center_y + radius * math.sin(angle))
+                self.canvas.create_line(start[0], start[1], end[0], end[1], width=6, fill="white")
+            else:  # Second marks
+                start = (center_x + (radius - 5) * math.cos(angle), center_y + (radius - 5) * math.sin(angle))
+                end = (center_x + radius * math.cos(angle), center_y + radius * math.sin(angle))
+                self.canvas.create_line(start[0], start[1], end[0], end[1], width=3, fill="white")
+
+    def draw_numbers(self):
+        center_x, center_y = self.screen_width / 2, self.screen_height / 2
+        radius = min(center_x, center_y) - 50
+
+        for i in range(1, 13):
+            angle = math.radians(i * 30 - 90)
+            coord = (center_x + (radius - 30) * math.cos(angle), center_y + (radius - 30) * math.sin(angle))
+            self.canvas.create_text(coord[0], coord[1], text=str(i), font=('Arial', int(radius/10), 'bold'), fill="white")
+
+    def update_clock(self):
+        self.canvas.delete("all")
+
+        center_x, center_y = self.screen_width / 2, self.screen_height / 2
+        radius = min(center_x, center_y) - 50
+
+        # Draw the clock circle
+        self.canvas.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, fill="black", outline="white")
+
+        self.draw_marks()
+        self.draw_numbers()
+
+        current_time = time.localtime(time.time())
+
+        # Calculate angles for each hand
+        second_angle = math.radians(current_time.tm_sec * 6 - 90)
+        minute_angle = math.radians(current_time.tm_min * 6 - 90 + current_time.tm_sec * 0.1)
+        hour_angle = math.radians(current_time.tm_hour * 30 - 90 + current_time.tm_min * 0.5)
+
+        second_coords = (center_x + radius * math.cos(second_angle), center_y + radius * math.sin(second_angle))
+        minute_coords = (center_x + (radius - 30) * math.cos(minute_angle), center_y + (radius - 30) * math.sin(minute_angle))
+        hour_coords = (center_x + (radius - 60) * math.cos(hour_angle), center_y + (radius - 60) * math.sin(hour_angle))
+
+        # Draw hands
+        self.draw_hand(second_coords, "red", int(radius/50))
+        self.draw_hand(minute_coords, "blue", int(radius/35))
+        self.draw_hand(hour_coords, "green", int(radius/25))
+
+        self.check_alarm(current_time)
+        self.update_id = self.after(10, self.update_clock)  # Update every 1 second
+
+    def set_alarm_hour(self):
+        if self.alarm_time is None:
+            self.alarm_time = [0, 0]
+        
+        self.alarm_time[0] = (self.alarm_time[0] + 1) % 24
+        self.update_alarm_display()
+
+    def set_alarm_minute(self):
+        if self.alarm_time is None:
+            self.alarm_time = [0, 0]
+
+        self.alarm_time[1] = (self.alarm_time[1] + 1) % 60
+        self.update_alarm_display()
+
+    def update_alarm_display(self):
+        if self.alarm_time:
+            self.alarm_display.config(text=f"{self.alarm_time[0]:02}:{self.alarm_time[1]:02}")
+        else:
+            self.alarm_display.config(text="--:--")
+
+    def check_alarm(self, current_time):
+        if self.alarm_time:
+            if (current_time.tm_hour == self.alarm_time[0] and current_time.tm_min == self.alarm_time[1] and current_time.tm_sec == 0):
+                self.alarm_rings()
+
+    def alarm_rings(self):
+        print("Alarm rings!")
+        response = messagebox.showinfo("Alarm", "Press OK button\nto close window!")
+        pass
+
+def cleanup_on_exit(self, event):
+    self.after_cancel(self.update_id)
+
+if __name__ == "__main__":
+    app = Clock()
+    app.mainloop()
