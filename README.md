@@ -6,16 +6,16 @@
 
   **4 Versions**:
   
-    V-x.0x: Round clock. Customized for 1920x1080 resolution.
+    V-1.0x: Round clock. Customized for 1920x1080 resolution.
 
 
-    v-x.1x: Round clock with visual alarm. Customized for 1920x1080 resolution.
+    v-1.1x: Round clock with visual alarm. Customized for 1920x1080 resolution.
 
 
-    v-x.2x: Round clock with GPIO Buzzer alarm. Customized for Raspberry Pi with 640x480 resolution.
+    v-1.2x: Round clock with GPIO Buzzer alarm. Customized for Raspberry Pi with 640x480 resolution.
 
 
-    v-x.3x: Round clock with audio file alarm. Customized for 800x480 resolution.
+    v-1.3x: Round clock with audio file alarm. Customized for 800x480 resolution.
   
   **Fullscreen Clock**: Display time in a frameless window mode.
   
@@ -69,7 +69,7 @@
     ```
     python3 clock_V-1.11.py
     ```
-  ![2023-09-29-115625_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/065845a4-a0ba-44df-9b39-90639c432f59)
+  ![2023-10-03-104239_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/6c2c4981-83bd-4ed7-adcf-7ea2d02f100a)
 
 
     V-1.21
@@ -119,14 +119,18 @@
      ```
         # Display for alarm time
         self.alarm_display = tk.Label(self.canvas, text="--:--", font=('Arial', 20, 'bold'), bg="black", fg="white")
-        self.alarm_display.place(x=self.screen_width - 10, y=50, anchor="e")
+        self.alarm_display.place(x=self.screen_width / 2, y=(self.screen_height / 2) + 50, anchor="n")
 
         # Buttons for setting the alarm
-        self.hour_button = tk.Button(self.canvas, text="Set Hour", command=self.set_alarm_hour, bg="white", width=10, height=5)
-        self.hour_button.place(x=self.screen_width, y=200, anchor="e")
+        self.hour_button = tk.Button(self.canvas, text="Set Hour", command=self.set_alarm_hour, 
+                             fg="black", bg="white", activebackground="white", activeforeground="black", 
+                             width=10, height=5, highlightbackground="black", bd=4, relief=tk.FLAT)
+        self.hour_button.place(x=0, y=self.screen_height, anchor="sw")
 
-        self.minute_button = tk.Button(self.canvas, text="Set Minute", command=self.set_alarm_minute, bg="white", width=10, height=5)
-        self.minute_button.place(x=self.screen_width, y=300, anchor="e")
+        self.minute_button = tk.Button(self.canvas, text="Set Minute", command=self.set_alarm_minute, 
+                               fg="black", bg="white", activebackground="white", activeforeground="black", 
+                               width=10, height=5, highlightbackground="black", bd=4, relief=tk.FLAT)
+        self.minute_button.place(x=self.screen_width, y=self.screen_height, anchor="se")
      ```
      
   **EXAMPLE**:
@@ -134,15 +138,31 @@
      ```
         # Display for alarm time
         self.alarm_display = tk.Label(self.canvas, text="--:--", font=('Arial', 20, 'bold'), bg="black", fg="purple")
-        self.alarm_display.place(x=self.screen_width - 686, y=430, anchor="e")
+        self.alarm_display.place(x=self.screen_width / 2, y=(self.screen_height / 2) + 50, anchor="n")
 
-        # Buttons for setting the alarm             # Added fg=
-        self.hour_button = tk.Button(self.canvas, text="Set Hour", command=self.set_alarm_hour, bg="black", fg="purple", width=10, height=5)
-        self.hour_button.place(x=self.screen_width -686, y=430, anchor="e")
+        # Buttons for setting the alarm
+        self.hour_button = tk.Button(self.canvas, text="Set Hour", command=self.set_alarm_hour, 
+                                     fg="purple", bg="black", activebackground="black", activeforeground="purple", 
+                                     width=10, height=5, highlightbackground="purple", bd=4, relief=tk.FLAT)
+        self.hour_button.place(x=0, y=self.screen_height, anchor="sw")
 
-        self.minute_button = tk.Button(self.canvas, text="Set Minute", command=self.set_alarm_minute, bg="black",  fg="purple", width=10, height=5)
-        self.minute_button.place(x=self.screen_width, y=430, anchor="e")
+        self.minute_button = tk.Button(self.canvas, text="Set Minute", command=self.set_alarm_minute, 
+                                       fg="purple", bg="black", activebackground="black", activeforeground="purple", 
+                                       width=10, height=5, highlightbackground="purple", bd=4, relief=tk.FLAT)
+        self.minute_button.place(x=self.screen_width, y=self.screen_height, anchor="se")
      ```
+
+  **GPIO Buzzer Pin**: Only applies to verxion number x.2x!!
+    Make sure to change the GPIO pin number to whichever your buzzer is attached to!
+
+    ```
+     19--        GPIO.setup(20, GPIO.OUT)
+     20--        GPIO.output(20, GPIO.LOW)  # Make sure the pin is low when the program starts
+
+    151--        GPIO.output(20, GPIO.HIGH)
+
+    163--            GPIO.output(20, GPIO.LOW)  # Set the GPIO pin to low when the dialog popup is closed
+    ```
 ## Possible changes:
 
   - Adding the current digital time below the clock for users who prefer a numerical representation.
@@ -152,6 +172,15 @@
 
 
   - Adding a date display (e.g., "Monday, September 29").
+
+## Change Logs:
+
+V-1.x1:
+  - Updated button and alarm display loacations to be static regardless of display size
+  - 
+
+V-1.x0:
+  - Original Release
 
 ## Contributing:
 
