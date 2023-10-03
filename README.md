@@ -6,16 +6,16 @@
 
   **4 Versions**:
   
-    V-1.00: Round clock. Customized for 1920x1080 resolution.
+    V-x.0x: Round clock. Customized for 1920x1080 resolution.
 
 
-    v-1.10: Round clock with visual alarm. Customized for 1920x1080 resolution.
+    v-x.1x: Round clock with visual alarm. Customized for 1920x1080 resolution.
 
 
-    v-1.20: Round clock with GPIO Buzzer alarm. Customized for Raspberry Pi with 640x480 resolution.
+    v-x.2x: Round clock with GPIO Buzzer alarm. Customized for Raspberry Pi with 640x480 resolution.
 
 
-    v-1.30: Round clock with audio file alarm. Customized for 800x480 resolution.
+    v-x.3x: Round clock with audio file alarm. Customized for 800x480 resolution.
   
   **Fullscreen Clock**: Display time in a frameless window mode.
   
@@ -56,7 +56,7 @@
 
 ## How to Use: 
 
-  1. **Run the Application**:
+  1. **Run the Application**: Make sure to use the correct version number! Check the version number of the file you want to use, as we are now on version number 1.x1!
    
     V-1.00
     ```
@@ -65,23 +65,23 @@
   ![2023-09-29-112542_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/4300af78-4376-4d57-8db2-e8a3c194d26f)
 
 
-    V-1.10
+    V-1.11
     ```
-    python3 clock_V-1.10.py
+    python3 clock_V-1.11.py
     ```
   ![2023-09-29-115625_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/065845a4-a0ba-44df-9b39-90639c432f59)
 
 
-    V-1.20
+    V-1.21
     ```
-    python3 clock_V-1.20.py
+    python3 clock_V-1.21.py
     ```
   ![2023-09-29-114654_640x480_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/1a1fb150-cc61-48be-96fe-14b0fbe9dc59)
 
 
-    V-1.30
+    V-1.31
     ```
-    python3 clock_V-1.30.py
+    python3 clock_V-1.31.py
     ```
   ![2023-09-29-115719_800x480_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/3639c7f4-7d92-447a-9ac9-791f3278707e)
 
