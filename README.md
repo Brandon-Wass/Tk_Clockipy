@@ -102,7 +102,7 @@
 
   **cleanup_on_exit**: A function to handle the cleanup process on exit.
 
-## Customization: *Applies to all versions*
+## Customization:
 
   **Colors**: When you want to change the color scheme.
   
