@@ -30,7 +30,7 @@ class Clock(tk.Tk):
         radius = min(center_x, center_y) - 50
 
         # Close the program by clicking anywhere on the window
-        self.canvas.bind("<Button-1>", lambda e: self.destroy())
+        self.canvas.bind("<Button-1>", lambda e: (self.destroy(), self.stop_sound()))
 
         
         # Initial alarm time to None (no alarm)
