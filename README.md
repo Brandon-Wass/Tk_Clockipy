@@ -6,16 +6,16 @@
 
   **4 Versions**:
   
-    V-1.0x: Round clock. Customized for 1920x1080 resolution.
+    V-1.0x: Round clock.
 
 
-    v-1.1x: Round clock with visual alarm. Customized for 1920x1080 resolution.
+    v-1.1x: Round clock with visual alarm.
 
 
-    v-1.2x: Round clock with GPIO Buzzer alarm. Customized for Raspberry Pi with 640x480 resolution.
+    v-1.2x: Round clock with GPIO Buzzer alarm. Customized for Raspberry Pi.
 
 
-    v-1.3x: Round clock with audio file alarm. Customized for 800x480 resolution.
+    v-1.3x: Round clock with audio file alarm.
   
   **Fullscreen Clock**: Display time in a frameless window mode.
   
@@ -88,7 +88,7 @@
 
   2. **Set the Alarm**: Click the 'Set Hour' and 'Set Minute' buttons to set the alarm.
    
-  3. **Alarm Notification**: A pop-up will appear when the alarm rings. Press the "OK" button to close the notification and stop the alarm.
+  3. **Alarm Notification**: A pop-up will appear when the alarm rings. Press the "OK" button to close the notification and stop the alarm. You will have to set a new alarm, if you want one set again.
    
   4. **Exit**: Click anywhere on the clock to exit the program.
 
@@ -130,25 +130,6 @@
         self.minute_button = tk.Button(self.canvas, text="Set Minute", command=self.set_alarm_minute, 
                                fg="black", bg="white", activebackground="white", activeforeground="black", 
                                width=10, height=5, highlightbackground="black", bd=4, relief=tk.FLAT)
-        self.minute_button.place(x=self.screen_width, y=self.screen_height, anchor="se")
-     ```
-     
-  **EXAMPLE**:
-  
-     ```
-        # Display for alarm time
-        self.alarm_display = tk.Label(self.canvas, text="--:--", font=('Arial', 20, 'bold'), bg="black", fg="purple")
-        self.alarm_display.place(x=self.screen_width / 2, y=(self.screen_height / 2) + 50, anchor="n")
-
-        # Buttons for setting the alarm
-        self.hour_button = tk.Button(self.canvas, text="Set Hour", command=self.set_alarm_hour, 
-                                     fg="purple", bg="black", activebackground="black", activeforeground="purple", 
-                                     width=10, height=5, highlightbackground="purple", bd=4, relief=tk.FLAT)
-        self.hour_button.place(x=0, y=self.screen_height, anchor="sw")
-
-        self.minute_button = tk.Button(self.canvas, text="Set Minute", command=self.set_alarm_minute, 
-                                       fg="purple", bg="black", activebackground="black", activeforeground="purple", 
-                                       width=10, height=5, highlightbackground="purple", bd=4, relief=tk.FLAT)
         self.minute_button.place(x=self.screen_width, y=self.screen_height, anchor="se")
      ```
 
