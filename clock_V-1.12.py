@@ -139,9 +139,6 @@ class Clock(tk.Tk):
                 self.alarm_triggered = False
 
     def alarm_rings(self):
-        # This will set the GPIO pin to high when the alarm rings
-        GPIO.output(20, GPIO.HIGH)
-
         # Create a Toplevel window for the alarm notification
         alarm_window = tk.Toplevel(self)
         alarm_window.title("Alarm")
@@ -162,7 +159,6 @@ class Clock(tk.Tk):
 
         # Define a method to stop the sound and close the Toplevel window
         def stop_alarm():
-            GPIO.output(20, GPIO.LOW)  # Set the GPIO pin to low when the dialog popup is closed
             alarm_window.destroy()
             self.focus_set()  # Bring main window back into focus
 
@@ -170,7 +166,6 @@ class Clock(tk.Tk):
         def reset_alarm():
             self.alarm_time = None
             self.update_alarm_display()
-            GPIO.output(20, GPIO.LOW)  # Set the GPIO pin to low when the dialog popup is closed
             alarm_window.destroy()
             self.focus_set()
 
