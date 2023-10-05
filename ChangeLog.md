@@ -6,13 +6,13 @@ V-1.x2:
 
   - Remodeled alarm_rings method
 
-    >-Moved alarm_window to the center of the screen
+    >Moved alarm_window to the center of the screen
 
-    >-Changed alarm_window size
+    >Changed alarm_window size
 
-    >-Added a reset_alarm method to reset the alarm display
+    >Added a reset_alarm method to reset the alarm display
 
-    >-Added a button to alarm_window
+    >Added a button to alarm_window
 
       >>Color coded buttons
 
