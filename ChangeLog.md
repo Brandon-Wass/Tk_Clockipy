@@ -16,11 +16,11 @@ V-1.x2:
 
       >>Color coded buttons
 
-        ->Red button stops the alarm
+        >>>Red button stops the alarm
 
           * This keeps the previously set alarm
 
-        ->Green button stops the alarm and resets the alarm display
+        >>>Green button stops the alarm and resets the alarm display
 
           * This effectively "shuts off" the alarm feature, and allows a new alarm to be set
 
