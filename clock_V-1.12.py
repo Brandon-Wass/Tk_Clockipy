@@ -32,7 +32,6 @@ class Clock(tk.Tk):
 
         # Initialize alarm variables
         self.alarm_time = None
-        self.sound_process = None
         self.alarm_triggered = False
 
         # Display for alarm time
