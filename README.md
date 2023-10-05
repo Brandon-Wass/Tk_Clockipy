@@ -24,6 +24,8 @@
   **Set Alarm**: Incremental buttons to set hours and minutes for the alarm.
   
   **Visual Alarm**: A pop-up notification appears when the alarm rings.
+
+  **Stop/Reset Alarm**: Buttons to stop and keep the previous alarm, or stop and reset the alarm.
   
 
 ## Prerequisites:
@@ -47,7 +49,7 @@
   pip3 install tkinter
   ```
 
-  3. **Move alarm.wav file to home directory**: Only for V-1.31 (audio version)
+  3. **Move alarm.wav file to home directory**: Only for V-1.32 (audio version)
 
   ```
   mv ~/Alarm_Clock/alarm.wav ~
@@ -65,30 +67,30 @@
   ![2023-09-29-112542_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/4300af78-4376-4d57-8db2-e8a3c194d26f)
 
 
-    V-1.11
+    V-1.12
     ```
-    python3 clock_V-1.11.py
+    python3 clock_V-1.12.py
     ```
   ![2023-10-03-104239_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/6c2c4981-83bd-4ed7-adcf-7ea2d02f100a)
 
 
-    V-1.21
+    V-1.22
     ```
-    python3 clock_V-1.21.py
+    python3 clock_V-1.22.py
     ```
   ![2023-09-29-114654_640x480_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/1a1fb150-cc61-48be-96fe-14b0fbe9dc59)
 
 
-    V-1.31
+    V-1.32
     ```
-    python3 clock_V-1.31.py
+    python3 clock_V-1.32.py
     ```
   ![2023-09-29-115719_800x480_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/3639c7f4-7d92-447a-9ac9-791f3278707e)
 
 
   2. **Set the Alarm**: Click the 'Set Hour' and 'Set Minute' buttons to set the alarm.
    
-  3. **Alarm Notification**: A pop-up will appear when the alarm rings. Press the "OK" button to close the notification and stop the alarm. You will have to set a new alarm, if you want one set again.
+  3. **Alarm Notification**: A pop-up will appear when the alarm rings. Press the stop button to stop the alarm and keep the previoulsy set one, or press the reset button to stop the alarm and clear the previously set one.
    
   4. **Exit**: Click anywhere on the clock to exit the program.
 
@@ -111,27 +113,6 @@
     2. Paying attention to what each mention of white or purple affects, change to whatever color you'd like
      
     3. Same applies when changing the background, just search for black instead.
-     
-  **Locations**: When you need to adjust the buttons and alarm locations.
-  
-    EDIT x= and y=:
-     
-     ```
-        # Display for alarm time
-        self.alarm_display = tk.Label(self.canvas, text="--:--", font=('Arial', 20, 'bold'), bg="black", fg="white")
-        self.alarm_display.place(x=self.screen_width / 2, y=(self.screen_height / 2) + 50, anchor="n")
-
-        # Buttons for setting the alarm
-        self.hour_button = tk.Button(self.canvas, text="Set Hour", command=self.set_alarm_hour, 
-                             fg="black", bg="white", activebackground="white", activeforeground="black", 
-                             width=10, height=5, highlightbackground="black", bd=4, relief=tk.FLAT)
-        self.hour_button.place(x=0, y=self.screen_height, anchor="sw")
-
-        self.minute_button = tk.Button(self.canvas, text="Set Minute", command=self.set_alarm_minute, 
-                               fg="black", bg="white", activebackground="white", activeforeground="black", 
-                               width=10, height=5, highlightbackground="black", bd=4, relief=tk.FLAT)
-        self.minute_button.place(x=self.screen_width, y=self.screen_height, anchor="se")
-     ```
 
   **GPIO Buzzer Pin**: Only applies to verxion number x.2x!!
     Make sure to change the GPIO pin number to whichever your buzzer is attached to!
