@@ -91,6 +91,9 @@
   2. **Set the Alarm**: Click the 'Set Hour' and 'Set Minute' buttons to set the alarm.
    
   3. **Alarm Notification**: A pop-up will appear when the alarm rings. Press the stop button to stop the alarm and keep the previoulsy set one, or press the reset button to stop the alarm and clear the previously set one.
+  ![2023-10-04-232314_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/6cf76f66-1199-414d-8490-700cc2727b5b)
+
+
    
   4. **Exit**: Click anywhere on the clock to exit the program.
 
