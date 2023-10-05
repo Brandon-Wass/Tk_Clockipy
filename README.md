@@ -34,54 +34,55 @@
 
   1. **Clone the repository and navigate to the directory**:
 
-  ```
-  git clone https://github.com/B-Boone/Alarm_Clock
-  cd Alarm_Clock
-  ```
+    ```
+    git clone https://github.com/B-Boone/Alarm_Clock
+    cd Alarm_Clock
+    ```
 
   2. **Install dependencies**:
 
-  ```
-  pip3 install tkinter
-  ```
+    ```
+    pip3 install tkinter
+    ```
 
   3. **Move alarm.wav file to home directory**: Only for V-1.32 (audio version)
 
-  ```
-  mv ~/Alarm_Clock/alarm.wav ~
-  ```
+    ```
+    mv ~/Alarm_Clock/alarm.wav ~
+    ```
 
 ## How to Use: 
 
   1. **Run the Application**: Make sure to use the correct version number! Check the version number of the file you want to use, as we are now on version number 1.x1!
 
     V-1.00
-    ```
-    python3 clock_V-1.00.py
-    ```
-  ![2023-09-29-112542_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/4300af78-4376-4d57-8db2-e8a3c194d26f)
+      ```
+      python3 clock_V-1.00.py
+      ```
+      ![2023-09-29-112542_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/4300af78-4376-4d57-8db2-e8a3c194d26f)
 
     V-1.13
-    ```
-    python3 clock_V-1.13.py
-    ```
-  ![2023-10-03-104239_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/6c2c4981-83bd-4ed7-adcf-7ea2d02f100a)
+      ```
+      python3 clock_V-1.13.py
+      ```
+      ![2023-10-03-104239_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/6c2c4981-83bd-4ed7-adcf-7ea2d02f100a)
 
     V-1.23
-    ```
-    python3 clock_V-1.23.py
-    ```
-  ![2023-09-29-114654_640x480_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/1a1fb150-cc61-48be-96fe-14b0fbe9dc59)
+      ```
+      python3 clock_V-1.23.py
+      ```
+      ![2023-09-29-114654_640x480_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/1a1fb150-cc61-48be-96fe-14b0fbe9dc59)
 
     V-1.33
-    ```
-    python3 clock_V-1.33.py
-    ```
-  ![2023-09-29-115719_800x480_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/3639c7f4-7d92-447a-9ac9-791f3278707e)
+      ```
+      python3 clock_V-1.33.py
+      ```
+      ![2023-09-29-115719_800x480_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/3639c7f4-7d92-447a-9ac9-791f3278707e)
 
   2. **Set the Alarm**: Click the 'Set Hour' and 'Set Minute' buttons to set the alarm.
 
   3. **Alarm Notification**: A pop-up will appear when the alarm rings. Press the stop button to stop the alarm and keep the previoulsy set one, or press the reset button to stop the alarm and clear the previously set one.
+    ![2023-10-05-114606_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/60132f30-85ed-45ce-83e4-61039501448f)
 
   4. **Exit**: Click anywhere on the clock to exit the program.
 
@@ -108,16 +109,16 @@
   **GPIO Buzzer Pin**: Only applies to verxion number x.2x!!
     Make sure to change the GPIO pin number to whichever your buzzer is attached to!
 
-    ```
-     16--        GPIO.setup(20, GPIO.OUT)
-     17--        GPIO.output(20, GPIO.LOW)
+      ```
+       16--        GPIO.setup(20, GPIO.OUT)
+       17--        GPIO.output(20, GPIO.LOW)
 
-    206--        GPIO.output(20, GPIO.HIGH)
+      206--        GPIO.output(20, GPIO.HIGH)
 
-    224--            GPIO.output(20, GPIO.LOW)
+      224--            GPIO.output(20, GPIO.LOW)
 
-    235--            GPIO.output(20, GPIO.LOW)
-    ```
+      235--            GPIO.output(20, GPIO.LOW)
+      ```
 ## Possible changes:
 
   - Adding the current digital time below the clock for users who prefer a numerical representation.
