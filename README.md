@@ -4,15 +4,13 @@
 
 ## Features:
 
-  **4 Versions**:
+  **3 Versions**:
 
-    V-1.0x: Round clock.
+    V-2.0x: Round clock.
 
-    v-1.1x: Round clock with visual alarm.
+    v-2.1x: Round clock with audio file alarm.
 
-    v-1.2x: Round clock with GPIO Buzzer alarm. Customized for Raspberry Pi.
-
-    v-1.3x: Round clock with audio file alarm.
+    v-2.2x: Round clock with GPIO Buzzer alarm. Customized for Raspberry Pi.
 
   **Fullscreen Clock**: Display time in a frameless window mode.
 
@@ -55,33 +53,26 @@
 
   1. **Run the Application**: Make sure to use the correct version number! Check the version number of the file you want to use, as we are now on version number 1.x1!
 
-    V-1.00
+    V-2.00
       ```
-      python3 clock_V-1.00.py
+      python3 clock_V-2.00.py
       ```
 
 ![2023-09-29-112542_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/4300af78-4376-4d57-8db2-e8a3c194d26f)
 
-    V-1.13
+    V-2.10
       ```
-      python3 clock_V-1.13.py
+      python3 clock_V-2.10.py
       ```
 
 ![2023-10-03-104239_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/6c2c4981-83bd-4ed7-adcf-7ea2d02f100a)
 
-    V-1.23
+    V-2.20
       ```
-      python3 clock_V-1.23.py
+      python3 clock_V-2.20.py
       ```
 
 ![2023-09-29-114654_640x480_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/1a1fb150-cc61-48be-96fe-14b0fbe9dc59)
-
-    V-1.33
-      ```
-      python3 clock_V-1.33.py
-      ```
-
-![2023-09-29-115719_800x480_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/3639c7f4-7d92-447a-9ac9-791f3278707e)
 
   2. **Set the Alarm**: Click the 'Set Hour' and 'Set Minute' buttons to set the alarm.
 
@@ -101,38 +92,11 @@
 
   **cleanup_on_exit**: A function to handle the cleanup process on exit.
 
-## Customization:
-
-  **Colors**: When you want to change the color scheme.
-
-    1. Search for every instance of the mention white, red, blue, and green(on base versions) or purple(on gpio or audio versions).
-
-    2. Paying attention to what each mention of white or purple affects, change to whatever color you'd like
-
-    3. Same applies when changing the background, just search for black instead.
-
-  **GPIO Buzzer Pin**: Only applies to verxion number x.2x!!
-    Make sure to change the GPIO pin number to whichever your buzzer is attached to!
-
-      ```
-       16--        GPIO.setup(20, GPIO.OUT)
-       17--        GPIO.output(20, GPIO.LOW)
-
-      206--        GPIO.output(20, GPIO.HIGH)
-
-      224--            GPIO.output(20, GPIO.LOW)
-
-      235--            GPIO.output(20, GPIO.LOW)
-      ```
 ## Possible changes:
 
   - Adding the current digital time below the clock for users who prefer a numerical representation.
 
-  - A settings menu to customize the clock's look, e.g., colors, or fonts.
-
   - Adding a date display (e.g., "Monday, September 29").
-
-  - Integrating the popup window into the program itself as a button that pops up while the alarm is playing.
 
 ## Contributing:
 
