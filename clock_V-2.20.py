@@ -194,7 +194,7 @@ class Clock(tk.Tk):
         self.alarm_triggered = False
 
         self.alarm_display = tk.Button(self.canvas, text="--:--", font=('Arial', 20, 'bold'), bg=self.alarm_display_bg_color, fg=self.alarm_display_fg_color,
-                                       activebackground=self.alarm_display_bg_color, activeforeground=self.alarm_display_fg_color, highlightbackground=self.alarm_display_brdr_color, width=3, height=1)
+                                       activebackground=self.alarm_display_bg_color, activeforeground=self.alarm_display_fg_color, highlightbackground=self.alarm_display_brdr_color, width=3, height=1, relief=tk.FLAT)
         self.alarm_display.place(x=self.screen_width / 2, y=(self.screen_height / 2) + 50, anchor="n")
         self.alarm_display.bind("<Button-1>", self.destroy_alarm)
 
