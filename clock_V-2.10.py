@@ -37,7 +37,6 @@ class PopupMenu(tk.Menu):
         self.add_cascade(label="Alarm Display Colors", menu=self.alarm)
         self.alarm.add_command(label="Background", command=self.change_alarm_display_bg_color)
         self.alarm.add_command(label="Text", command=self.change_alarm_display_fg_color)
-        self.alarm.add_command(label="Border", command=self.change_alarm_display_brdr_color)
         self.audio = tk.Menu(self, tearoff=1)
         self.add_cascade(label="Audio File", menu=self.audio)
         self.audio.add_command(label="Change Audio File", command=self.change_audio_file)
@@ -155,7 +154,6 @@ class Clock(tk.Tk):
         self.numbers_color = "purple"
         self.alarm_display_bg_color = "black"
         self.alarm_display_fg_color = "purple"
-        self.alarm_display_brdr_color = "black"
         self.hour_button_bg_color = "black"
         self.hour_button_fg_color = "purple"
         self.minute_button_bg_color = "black"
@@ -186,8 +184,8 @@ class Clock(tk.Tk):
         self.sound_process = None
         self.alarm_triggered = False
 
-        self.alarm_display = tk.Button(self.canvas, text="--:--", font=('Arial', 20, 'bold'), bg=self.alarm_display_bg_color, fg=self.alarm_display_fg_color,
-                                       activebackground=self.alarm_display_bg_color, activeforeground=self.alarm_display_fg_color, highlightbackground=self.alarm_display_brdr_color, width=3, height=1)
+        self.alarm_display = tk.Label(self.canvas, text="--:--", font=('Arial', 20, 'bold'), bg=self.alarm_display_bg_color, fg=self.alarm_display_fg_color,
+                                       activebackground=self.alarm_display_bg_color, activeforeground=self.alarm_display_fg_color, width=5, height=1)
         self.alarm_display.place(x=self.screen_width / 2, y=(self.screen_height / 2) + 50, anchor="n")
         self.alarm_display.bind("<Button-1>", self.destroy_alarm)
 
@@ -196,16 +194,16 @@ class Clock(tk.Tk):
         self.button_press_time_minute = None
         self.scheduled_event_minute = None
         
-        self.hour_button = tk.Button(self.canvas, text="Set Hour", 
+        self.hour_button = tk.Button(self.canvas, text="Set Hour", font=('Arial', 20, 'bold'), 
                              fg=self.hour_button_fg_color, bg=self.hour_button_bg_color, activebackground=self.hour_button_bg_color, activeforeground=self.hour_button_fg_color, 
-                             width=10, height=5, highlightbackground=self.hour_button_brdr_color, relief=tk.FLAT)
+                             width=8, height=4, highlightbackground=self.hour_button_brdr_color, relief=tk.FLAT)
         self.hour_button.place(x=0, y=self.screen_height, anchor="sw")
         self.hour_button.bind("<Button-1>", self.start_hour_increment)
         self.hour_button.bind("<ButtonRelease-1>", self.stop_hour_increment)
 
-        self.minute_button = tk.Button(self.canvas, text="Set Minute",
+        self.minute_button = tk.Button(self.canvas, text="Set Minute", font=('Arial', 20, 'bold'), 
                                fg=self.minute_button_fg_color, bg=self.minute_button_bg_color, activebackground=self.minute_button_bg_color, activeforeground=self.minute_button_fg_color, 
-                               width=10, height=5, highlightbackground=self.minute_button_brdr_color, relief=tk.FLAT)
+                               width=8, height=4, highlightbackground=self.minute_button_brdr_color, relief=tk.FLAT)
         self.minute_button.place(x=self.screen_width, y=self.screen_height, anchor="se")
         self.minute_button.bind("<Button-1>", self.start_minute_increment)
         self.minute_button.bind("<ButtonRelease-1>", self.stop_minute_increment)
