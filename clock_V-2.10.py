@@ -3,8 +3,6 @@
 import tkinter as tk
 import tkinter.filedialog as filedialog
 import tkinter.colorchooser as colorchooser
-import tkinter.simpledialog as simpledialog
-import RPi.GPIO as GPIO
 import time
 import math
 import subprocess
@@ -40,10 +38,9 @@ class PopupMenu(tk.Menu):
         self.alarm.add_command(label="Background", command=self.change_alarm_display_bg_color)
         self.alarm.add_command(label="Text", command=self.change_alarm_display_fg_color)
         self.alarm.add_command(label="Border", command=self.change_alarm_display_brdr_color)
-        self.gpio = tk.Menu(self, tearoff=1)
-        self.add_cascade(label="GPIO Pin", menu=self.gpio)
-        self.gpio.add_command(label="Change GPIO Pin", command=self.change_gpio_pin)
-
+        self.audio = tk.Menu(self, tearoff=1)
+        self.add_cascade(label="Audio File", menu=self.audio)
+        self.audio.add_command(label="Change Audio File", command=self.change_audio_file)
         self.add_separator()
         self.add_command(label="Close Menu", command=self.close_menu) # added line
         self.add_command(label="Exit Program", command=self.exit_program)
@@ -84,17 +81,19 @@ class PopupMenu(tk.Menu):
         if color:
             self.parent.numbers_color = color
 
-    def change_gpio_pin(self):
-        pin = simpledialog.askinteger("GPIO Pin", "Enter a new GPIO pin number:")
-        if pin:
-            self.parent.change_gpio_pin(pin)
+    def change_audio_file(self):
+        file_path = filedialog.askopenfilename(filetypes=[("WAV Files", "*.wav"), ("All Files", "*.*")])
+        if file_path:
+            self.parent.audio_file = file_path
 
     def close_menu(self):
         self.unpost()
 
     def exit_program(self):
-        GPIO.output(20, GPIO.LOW)
-        GPIO.cleanup()
+        # Define a method to stop the sound and close the Toplevel window
+        def stop_alarm():
+            self.parent.stop_sound()
+        stop_alarm()
         self.parent.destroy()
 
     def change_hour_button_bg_color(self):
@@ -145,12 +144,6 @@ class PopupMenu(tk.Menu):
 class Clock(tk.Tk):
     def __init__(self):
         super().__init__()
-
-        GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BCM)
-        self.gpio_pin = 20
-        GPIO.setup(self.gpio_pin, GPIO.OUT)
-        GPIO.output(self.gpio_pin, GPIO.LOW)
 
         # Colors for different aspects
         self.second_color = "purple"
@@ -224,12 +217,6 @@ class Clock(tk.Tk):
             self.popup_menu.tk_popup(event.x_root, event.y_root)
         finally:
             self.popup_menu.grab_release()
-
-    def change_gpio_pin(self, pin):
-        GPIO.cleanup()  # Clean the previous GPIO setup
-        GPIO.setup(pin, GPIO.OUT)  # Set the new pin as an output
-        GPIO.output(pin, GPIO.LOW)  # Ensure the pin starts off LOW
-        self.gpio_pin = pin  # Update the GPIO pin number in the class instance
 
     # Define a method to increment the alarm time
     def increment_alarm_time(self, index):
@@ -361,6 +348,17 @@ class Clock(tk.Tk):
         else:
             self.alarm_display.config(text="--:--")
 
+    def play_sound(self):
+        self.sound_playing = True
+        while self.sound_playing:
+            self.sound_process = subprocess.Popen(['aplay', self.audio_file])
+            self.sound_process.wait()
+
+    def stop_sound(self):
+        self.sound_playing = False
+        if self.sound_process and self.sound_process.poll() is None:
+            self.sound_process.terminate()
+
     def check_alarm(self, current_time):
         if self.alarm_time:
             if (current_time.tm_hour == self.alarm_time[0] and current_time.tm_min == self.alarm_time[1]
@@ -377,16 +375,17 @@ class Clock(tk.Tk):
         self.alarm_triggered = False
 
     def show_alarm_popup(self):
-        GPIO.output(self.gpio_pin, GPIO.HIGH)
+        sound_thread = threading.Thread(target=self.play_sound)
+        sound_thread.start()
         # Define a method to stop the sound and close the Toplevel window
         def stop_alarm():   # index: 0 - hour, 1 - minute
-            GPIO.output(self.gpio_pin, GPIO.LOW)
+            self.stop_sound()
             self.delete_alarm()
             self.popup.destroy()  # Close the Toplevel window
             self.focus_set()    # Set the focus to the main window
         # Define a method to reset the alarm, stop the sound, and close the Toplevel window
         def reset_alarm():  # index: 0 - hour, 1 - minute
-            GPIO.output(self.gpio_pin, GPIO.LOW)
+            self.stop_sound()
             self.delete_alarm()
             self.alarm_time = None  # Reset the alarm time
             self.update_alarm_display() # Call the update_alarm_display() method
