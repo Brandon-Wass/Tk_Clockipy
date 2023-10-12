@@ -1,3 +1,13 @@
+v-2.X2:
+
+  - Now uses a black 1x1 image file as the background
+
+    >This allows the background to be changed to whatever provided image file
+
+      >>Changing the background is accessed under the left-click menu
+
+----------
+
 V-2.x1:
 
   - Added a snooze button to the alarm popup
