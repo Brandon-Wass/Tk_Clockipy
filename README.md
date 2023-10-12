@@ -4,13 +4,11 @@
 
 ## Features:
 
-  **3 Versions**:
+  **2 Versions**:
 
     V-2.0x: Round clock.
 
     v-2.1x: Round clock with audio file alarm.
-
-    v-2.2x: Round clock with GPIO Buzzer alarm. Customized for Raspberry Pi.
 
   **Fullscreen Clock**: Display time in a frameless window mode.
 
@@ -45,10 +43,10 @@
     pip3 install tkinter
     ```
 
-  3. **Move alarm.wav file to home directory**: Only for V-2.12 (audio version)
+  3. **Move alarm.wav and image.png files to home directory**: Only for V-2.12 (audio version)
 
     ```
-    mv ~/Alarm_Clock/alarm.wav ~
+  mv ~/Alarm_Clock/alarm.wav ~ && mv ~/Alarm_Clock/image.png ~
     ```
 
 ## How to Use: 
@@ -68,13 +66,6 @@
       ```
 
 ![2023-10-03-104239_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/6c2c4981-83bd-4ed7-adcf-7ea2d02f100a)
-
-    V-2.22
-      ```
-      python3 clock_V-2.22.py
-      ```
-
-![2023-09-29-114654_640x480_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/1a1fb150-cc61-48be-96fe-14b0fbe9dc59)
 
   2. **Set the Alarm**: Click the 'Set Hour' and 'Set Minute' buttons to set the alarm.
 
