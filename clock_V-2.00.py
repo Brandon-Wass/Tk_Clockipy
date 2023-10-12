@@ -1,11 +1,9 @@
 #!/usr/bin/env python3 
 
-import tkinter as tk
-import tkinter.simpledialog as simpledialog
-import tkinter.messagebox as messagebox
-import tkinter.colorchooser as colorchooser
 import time
 import math
+import tkinter as tk
+import tkinter.colorchooser as colorchooser
 
 class PopupMenu(tk.Menu):
     def __init__(self, parent):

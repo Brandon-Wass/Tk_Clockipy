@@ -1,12 +1,24 @@
+V-2.x1:
+
+  - Added a snooze button to the alarm popup
+
+    >Default snooze time is 5 minutes
+
+      >>This can be adjusted under the left-click popup menu
+    
+
+----------
+
 V-2.x0:
 
   - Added a menu interface that is accessed by left click full of customization options
 
-    >
-
-  - Changed the alarm to a button that can be pressed to reset the alarm *This does not stop the alarm
+  - Changed the alarm to a button that can be pressed to reset the alarm
+  
+    *This does not stop the alarm
 
   - Instead of opening a top level window when the alarm rings, an overlay is created with the buttons for stopping the alarm
+
     >This gives the aesthetic of looking to be built into the app itself
 
   - Changed the alarm functions
@@ -70,3 +82,5 @@ V-1.x1:
 V-1.x0:
 
   - Original Release
+
+----------

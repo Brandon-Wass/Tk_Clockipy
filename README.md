@@ -1,6 +1,6 @@
 # Fullscreen Clock with Alarm
 
-  A simple fullscreen digital clock built with Python's `tkinter` module. Apart from just telling the time, the clock also has a basic alarm feature.
+  A simple fullscreen digital clock built with Python's `tkinter` module. Apart from just telling the time, the clock also has a basic alarm feature. There is also a menu full of customization options accessible by left-clicking.
 
 ## Features:
 
@@ -20,7 +20,7 @@
 
   **Visual Alarm**: A pop-up notification appears when the alarm rings.
 
-  **Stop/Reset Alarm**: Buttons to stop and keep the previous alarm, or stop and reset the alarm.
+  **Stop/Snooze/Reset Alarm**: Buttons to stop and keep the previous alarm, stop and snooze the alarm, or stop and reset the alarm.
 
 ## Prerequisites:
 
@@ -43,7 +43,7 @@
     pip3 install tkinter
     ```
 
-  3. **Move alarm.wav file to home directory**: Only for V-1.32 (audio version)
+  3. **Move alarm.wav file to home directory**: Only for V-2.11 (audio version)
 
     ```
     mv ~/Alarm_Clock/alarm.wav ~
@@ -51,7 +51,7 @@
 
 ## How to Use: 
 
-  1. **Run the Application**: Make sure to use the correct version number! Check the version number of the file you want to use, as we are now on version number 1.x1!
+  1. **Run the Application**: Make sure to use the correct version number! Check the version number of the file you want to use, as we are now on version number 2.x1!
 
     V-2.00
       ```
@@ -60,23 +60,25 @@
 
 ![2023-09-29-112542_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/4300af78-4376-4d57-8db2-e8a3c194d26f)
 
-    V-2.10
+    V-2.11
       ```
-      python3 clock_V-2.10.py
+      python3 clock_V-2.11.py
       ```
 
 ![2023-10-03-104239_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/6c2c4981-83bd-4ed7-adcf-7ea2d02f100a)
 
-    V-2.20
+    V-2.21
       ```
-      python3 clock_V-2.20.py
+      python3 clock_V-2.21.py
       ```
 
 ![2023-09-29-114654_640x480_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/1a1fb150-cc61-48be-96fe-14b0fbe9dc59)
 
   2. **Set the Alarm**: Click the 'Set Hour' and 'Set Minute' buttons to set the alarm.
 
-  3. **Alarm Notification**: A pop-up will appear when the alarm rings. Press the stop button to stop the alarm and keep the previoulsy set one, or press the reset button to stop the alarm and clear the previously set one.
+  3. **Alarm Notification**: A pop-up will appear when the alarm rings. Press the stop button to stop the alarm and keep the previoulsy set one, press the snooze button to stop the alarm and have it go off again in 5 minutes*, or press the reset button to stop the alarm and clear the previously set one.
+
+    * This can be adjusted under the left-click popup menu
 
 ![2023-10-05-114606_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/60132f30-85ed-45ce-83e4-61039501448f)
 
@@ -89,8 +91,6 @@
     - Has methods to draw the clock hands, hour marks, numbers, and check the alarm.
 
     - Contains button commands to set the alarm hour and minute.
-
-  **cleanup_on_exit**: A function to handle the cleanup process on exit.
 
 ## Possible changes:
 
