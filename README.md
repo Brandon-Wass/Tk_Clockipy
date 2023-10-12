@@ -82,7 +82,7 @@
 
     * This can be adjusted under the left-click popup menu
     
-![2023-10-05-114606_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/60132f30-85ed-45ce-83e4-61039501448f)
+![2023-10-11-224403_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/0a88ea53-1ad6-41d6-985b-d287c105d0de)
 
   4. **Exit**: Click anywhere on the clock to exit the program.
 
