@@ -81,7 +81,7 @@
   3. **Alarm Notification**: A pop-up will appear when the alarm rings. Press the stop button to stop the alarm and keep the previoulsy set one, press the snooze button to stop the alarm and have it go off again in 5 minutes*, or press the reset button to stop the alarm and clear the previously set one.
 
     * This can be adjusted under the left-click popup menu
-
+    
 ![2023-10-05-114606_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/60132f30-85ed-45ce-83e4-61039501448f)
 
   4. **Exit**: Click anywhere on the clock to exit the program.
