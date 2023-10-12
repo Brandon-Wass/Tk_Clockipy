@@ -60,12 +60,16 @@
 
 ![2023-09-29-112542_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/4300af78-4376-4d57-8db2-e8a3c194d26f)
 
+![2023-10-11-223852_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/1fa87fe2-1498-4cfd-9cf0-759361e8e804)
+
     V-2.11
       ```
       python3 clock_V-2.11.py
       ```
 
 ![2023-10-03-104239_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/6c2c4981-83bd-4ed7-adcf-7ea2d02f100a)
+
+![2023-10-11-223948_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/c94326a3-a424-43d5-8da5-83edb32e4742)
 
     V-2.21
       ```
@@ -80,7 +84,7 @@
 
     * This can be adjusted under the left-click popup menu
 
-![2023-10-05-114606_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/60132f30-85ed-45ce-83e4-61039501448f)
+![2023-10-11-224403_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/0a88ea53-1ad6-41d6-985b-d287c105d0de)
 
   4. **Exit**: Click anywhere on the clock to exit the program.
 
