@@ -78,6 +78,8 @@
 
 ![2023-09-29-114654_640x480_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/1a1fb150-cc61-48be-96fe-14b0fbe9dc59)
 
+![2023-10-11-224234_640x480_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/4d8293b6-9918-4c57-a6fa-f29f45dd6d64)
+
   2. **Set the Alarm**: Click the 'Set Hour' and 'Set Minute' buttons to set the alarm.
 
   3. **Alarm Notification**: A pop-up will appear when the alarm rings. Press the stop button to stop the alarm and keep the previoulsy set one, press the snooze button to stop the alarm and have it go off again in 5 minutes*, or press the reset button to stop the alarm and clear the previously set one.
