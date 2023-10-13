@@ -8,6 +8,7 @@ from PIL import Image as PILImage
 from PIL import ImageTk
 import tkinter.colorchooser as colorchooser
 import tkinter.simpledialog as simpledialog
+import tkinter.filedialog as filedialog
 import RPi.GPIO as GPIO
 
 class PopupMenu(tk.Menu):
@@ -60,7 +61,6 @@ class PopupMenu(tk.Menu):
         self.background.add_command(label="Select Image", command=self.parent.select_image)
         self.background.add_command(label="Clear Image", command=self.parent.clear_image)
         self.add_separator()
-        self.add_command(label="Close Menu", command=self.close_menu) # added line
         self.add_command(label="Exit Program", command=self.exit_program)
 
     def seconds_hand_colors(self):
@@ -180,6 +180,7 @@ class Clock(tk.Tk):
 
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BCM)
+        self.gpio_pin = 20
         GPIO.setup(self.gpio_pin, GPIO.OUT)
         GPIO.output(self.gpio_pin, GPIO.LOW)
 
@@ -203,7 +204,6 @@ class Clock(tk.Tk):
         self.dtdat_color = "purple"
         self.dttim_color = "purple"
         self.snooze_time = 5
-        self.pin = 20
 
         self.attributes('-fullscreen', True)
         self.update_idletasks()
@@ -262,6 +262,30 @@ class Clock(tk.Tk):
             self.popup_menu.tk_popup(event.x_root, event.y_root)
         finally:
             self.popup_menu.grab_release()
+
+    def select_image(self):
+        self.image_path = tk.filedialog.askopenfilename(title="Select Image", filetypes=[("Image Files", "*")])
+        if self.image_path:
+            self.image = PILImage.open(self.image_path)
+            self.image = self.image.resize((self.screen_width, self.screen_height), 3)
+            self.image = ImageTk.PhotoImage(self.image)
+            self.update_clock()
+
+    def clear_image(self):
+        if hasattr(self, 'image'):
+            del self.image
+        self.update_clock()
+
+    def draw_background(self):
+        if hasattr(self, 'image') and self.image:  # check if self.image exists and is not None
+            self.canvas.create_image(self.screen_width / 2, self.screen_height / 2, image=self.image)
+        else:
+            self.canvas.create_image(self.screen_width / 2, self.screen_height / 2, image=self.bg_image)
+        
+        # Always draw the clock circle regardless of the background image
+        center_x, center_y = self.screen_width / 2, self.screen_height / 2
+        radius = min(center_x, center_y) - 50
+        self.canvas.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, outline=self.border_color)
 
     def change_gpio_pin(self, pin):
         GPIO.cleanup()  # Clean the previous GPIO setup
@@ -367,6 +391,8 @@ class Clock(tk.Tk):
 
         self.canvas.create_oval(center_x - radius, center_y - radius, center_x + radius, center_y + radius, fill=self.bg_color, outline=self.border_color)
 
+        self.draw_background()
+        self.draw_date_and_time()
         self.draw_marks()
         self.draw_numbers()
 
