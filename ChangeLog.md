@@ -1,3 +1,12 @@
+V-3.x0:
+  - Added digital date and time in top left corner
+
+    >The color of the text is tied to the clock numbers.
+
+      >>This will be patched in a minor update or new version to have its own definitions to be customized seperately.
+
+----------
+
 v-2.X2:
 
   - Now uses a black 1x1 image file as the background
@@ -5,6 +14,12 @@ v-2.X2:
     >This allows the background to be changed to whatever provided image file
 
       >>Changing the background is accessed under the left-click menu
+
+  - Raspberry Pi GPIO Buzzer version has been taken out due to compatibility issues with new coding
+
+    >These programs no longer work on Raspberry Pi
+
+      >>Last compatible version is V-2.x1
 
 ----------
 

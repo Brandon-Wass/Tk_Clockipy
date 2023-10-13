@@ -6,9 +6,9 @@
 
   **2 Versions**:
 
-    V-2.0x: Round clock.
+    V-3.0x: Round clock.
 
-    v-2.1x: Round clock with audio file alarm.
+    v-3.1x: Round clock with audio file alarm.
 
   **Fullscreen Clock**: Display time in a frameless window mode.
 
@@ -43,7 +43,7 @@
     pip3 install tkinter
     ```
 
-  3. **Move alarm.wav and image.png files to home directory**: Only for V-2.12 (audio version)
+  3. **Move alarm.wav and image.png files to home directory**: Only for V-3.10 (audio version)
 
     ```
   mv ~/Alarm_Clock/alarm.wav ~ && mv ~/Alarm_Clock/image.png ~
@@ -51,18 +51,18 @@
 
 ## How to Use: 
 
-  1. **Run the Application**: Make sure to use the correct version number! Check the version number of the file you want to use, as we are now on version number 2.x2!
+  1. **Run the Application**: Make sure to use the correct version number! Check the version number of the file you want to use, as we are now on version number 3.x0!
 
-    V-2.02
+    V-3.00
       ```
-      python3 clock_V-2.02.py
+      python3 clock_V-3.00.py
       ```
 
 ![2023-09-29-112542_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/4300af78-4376-4d57-8db2-e8a3c194d26f)
 
-    V-2.12
+    V-3.10
       ```
-      python3 clock_V-2.12.py
+      python3 clock_V-3.10.py
       ```
 
 ![2023-10-03-104239_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/6c2c4981-83bd-4ed7-adcf-7ea2d02f100a)
@@ -86,10 +86,6 @@
     - Contains button commands to set the alarm hour and minute.
 
 ## Possible changes:
-
-  - Adding the current digital time below the clock for users who prefer a numerical representation.
-
-  - Adding a date display (e.g., "Monday, September 29").
 
 ## Contributing:
 
