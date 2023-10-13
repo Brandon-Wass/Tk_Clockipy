@@ -1,3 +1,14 @@
+V-3.x1:
+  - Minor coding patch
+
+    >Brought back GPIO version
+
+  - Digital clock has its own customization features
+
+    >Added buttons to the left-click menu
+
+----------
+
 V-3.x0:
   - Added digital date and time in top left corner
 

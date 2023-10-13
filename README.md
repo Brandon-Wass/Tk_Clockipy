@@ -4,11 +4,13 @@
 
 ## Features:
 
-  **2 Versions**:
+  **3 Versions**:
 
     V-3.0x: Round clock.
 
     v-3.1x: Round clock with audio file alarm.
+
+    v-3.2x: Round clock with GPIO buzzer alarm.
 
   **Fullscreen Clock**: Display time in a frameless window mode.
 
