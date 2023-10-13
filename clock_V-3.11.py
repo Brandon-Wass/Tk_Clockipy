@@ -18,15 +18,16 @@ class PopupMenu(tk.Menu):
         self.parent = parent
 
         # Adding a submenu for color options
-        self.clock = tk.Menu(self, tearoff=0)
-        self.add_cascade(label="Clock Colors", menu=self.clock)
-        self.clock.add_command(label="Seconds Hand", command=self.seconds_hand_colors)
-        self.clock.add_command(label="Minutes Hand", command=self.minutes_hand_colors)
-        self.clock.add_command(label="Hours Hand", command=self.hours_hand_colors)
-        self.clock.add_command(label="Clock Border", command=self.change_border_color)
-        self.clock.add_command(label="Center Dot", command=self.change_bg_color)
-        self.clock.add_command(label="Markings", command=self.change_markings_color)
-        self.clock.add_command(label="Clock Numbers", command=self.change_numbers_color)
+        self.analog = tk.Menu(self, tearoff=1)
+        self.add_cascade(label="Analog Clock Colors", menu=self.analog)
+        self.analog.add_command(label="Seconds Hand", command=self.seconds_hand_colors)
+        self.analog.add_command(label="Minutes Hand", command=self.minutes_hand_colors)
+        self.analog.add_command(label="Hours Hand", command=self.hours_hand_colors)
+        self.analog.add_command(label="Clock Border", command=self.change_border_color)
+        self.analog.add_command(label="Center Dot", command=self.change_bg_color)
+        self.analog.add_command(label="Markings", command=self.change_markings_color)
+        self.analog.add_command(label="Clock Numbers", command=self.change_numbers_color)
+        self.add_separator()
         self.hour = tk.Menu(self, tearoff=0)
         self.add_cascade(label="Hour Button Colors", menu=self.hour)
         self.hour.add_command(label="Background", command=self.change_hour_button_bg_color)
@@ -49,6 +50,12 @@ class PopupMenu(tk.Menu):
         self.snooze = tk.Menu(self, tearoff=0)
         self.add_cascade(label="Snooze Time", menu=self.snooze)
         self.snooze.add_command(label="Custom Snooze Time", command=self.custom_snooze_time)
+        self.add_separator()
+        self.digital = tk.Menu(self, tearoff=1)
+        self.add_cascade(label="Digital Clock Colors", menu=self.digital)
+        self.digital.add_command(label="Day of Week", command=self.change_dtdow_color)
+        self.digital.add_command(label="Date", command=self.change_dtdat_color)
+        self.digital.add_command(label="Time", command=self.change_dttim_color)
         self.add_separator()
         self.background = tk.Menu(self, tearoff=1)
         self.add_cascade(label="Background Image", menu=self.background)
@@ -98,6 +105,21 @@ class PopupMenu(tk.Menu):
         if file_path:
             self.parent.audio_file = file_path
 
+    def change_dtdow_color(self):
+        color = colorchooser.askcolor()[1]
+        if color:
+            self.parent.dtdow_color = color
+
+    def change_dtdat_color(self):     
+        color = colorchooser.askcolor()[1]
+        if color:
+            self.parent.dtdat_color = color
+
+    def change_dttim_color(self):
+        color = colorchooser.askcolor()[1]
+        if color:
+            self.parent.dttim_color = color
+            
     def exit_program(self):
         # Define a method to stop the sound and close the Toplevel window
         def stop_alarm():
@@ -177,6 +199,9 @@ class Clock(tk.Tk):
         self.minute_button_fg_color = "purple"
         self.hour_button_brdr_color = "purple"
         self.minute_button_brdr_color = "purple"
+        self.dtdow_color = "purple"
+        self.dtdat_color = "purple"
+        self.dttim_color = "purple"
         self.snooze_time = 5
 
         self.attributes('-fullscreen', True)
@@ -349,9 +374,9 @@ class Clock(tk.Tk):
         date = now.strftime('%d %B %Y')
         time_str = now.strftime('%H:%M:%S')
         padding = 10
-        self.canvas.create_text(padding, padding, text=day_of_week, anchor='nw', font=('Arial', 20), fill=self.numbers_color)
-        self.canvas.create_text(padding, padding + 30, text=date, anchor='nw', font=('Arial', 20), fill=self.numbers_color)
-        self.canvas.create_text(padding, padding + 60, text=time_str, anchor='nw', font=('Arial', 20), fill=self.numbers_color)
+        self.canvas.create_text(padding, padding, text=day_of_week, anchor='nw', font=('Arial', 20), fill=self.dtdow_color)
+        self.canvas.create_text(padding, padding + 30, text=date, anchor='nw', font=('Arial', 20), fill=self.dtdat_color)
+        self.canvas.create_text(padding, padding + 60, text=time_str, anchor='nw', font=('Arial', 20), fill=self.dttim_color)
 
     def update_clock(self):
         self.canvas.delete("all")

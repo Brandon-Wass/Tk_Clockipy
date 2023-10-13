@@ -2,6 +2,7 @@
 
 import time
 import math
+import datetime
 import tkinter as tk
 from PIL import Image as PILImage
 from PIL import ImageTk
@@ -15,15 +16,16 @@ class PopupMenu(tk.Menu):
         self.parent = parent
 
         # Adding a submenu for color options
-        self.clock = tk.Menu(self, tearoff=1)
-        self.add_cascade(label="Clock Colors", menu=self.clock)
-        self.clock.add_command(label="Seconds Hand", command=self.seconds_hand_colors)
-        self.clock.add_command(label="Minutes Hand", command=self.minutes_hand_colors)
-        self.clock.add_command(label="Hours Hand", command=self.hours_hand_colors)
-        self.clock.add_command(label="Clock Border", command=self.change_border_color)
-        self.clock.add_command(label="Background", command=self.change_bg_color)
-        self.clock.add_command(label="Markings", command=self.change_markings_color)
-        self.clock.add_command(label="Clock Numbers", command=self.change_numbers_color)
+        self.analog = tk.Menu(self, tearoff=1)
+        self.add_cascade(label="Analog Clock Colors", menu=self.analog)
+        self.analog.add_command(label="Seconds Hand", command=self.seconds_hand_colors)
+        self.analog.add_command(label="Minutes Hand", command=self.minutes_hand_colors)
+        self.analog.add_command(label="Hours Hand", command=self.hours_hand_colors)
+        self.analog.add_command(label="Clock Border", command=self.change_border_color)
+        self.analog.add_command(label="Center Dot", command=self.change_bg_color)
+        self.analog.add_command(label="Markings", command=self.change_markings_color)
+        self.analog.add_command(label="Clock Numbers", command=self.change_numbers_color)
+        self.add_separator()
         self.hour = tk.Menu(self, tearoff=1)
         self.add_cascade(label="Hour Button Colors", menu=self.hour)
         self.hour.add_command(label="Background", command=self.change_hour_button_bg_color)
@@ -46,6 +48,17 @@ class PopupMenu(tk.Menu):
         self.snooze = tk.Menu(self, tearoff=0)
         self.add_cascade(label="Snooze Time", menu=self.snooze)
         self.snooze.add_command(label="Custom Snooze Time", command=self.custom_snooze_time)
+        self.add_separator()
+        self.digital = tk.Menu(self, tearoff=1)
+        self.add_cascade(label="Digital Clock Colors", menu=self.digital)
+        self.digital.add_command(label="Day of Week", command=self.change_dtdow_color)
+        self.digital.add_command(label="Date", command=self.change_dtdat_color)
+        self.digital.add_command(label="Time", command=self.change_dttim_color)
+        self.add_separator()
+        self.background = tk.Menu(self, tearoff=1)
+        self.add_cascade(label="Background Image", menu=self.background)
+        self.background.add_command(label="Select Image", command=self.parent.select_image)
+        self.background.add_command(label="Clear Image", command=self.parent.clear_image)
         self.add_separator()
         self.add_command(label="Close Menu", command=self.close_menu) # added line
         self.add_command(label="Exit Program", command=self.exit_program)
@@ -91,9 +104,21 @@ class PopupMenu(tk.Menu):
         if pin:
             self.parent.change_gpio_pin(pin)
 
-    def close_menu(self):
-        self.unpost()
+    def change_dtdow_color(self):
+        color = colorchooser.askcolor()[1]
+        if color:
+            self.parent.dtdow_color = color
 
+    def change_dtdat_color(self):     
+        color = colorchooser.askcolor()[1]
+        if color:
+            self.parent.dtdat_color = color
+
+    def change_dttim_color(self):
+        color = colorchooser.askcolor()[1]
+        if color:
+            self.parent.dttim_color = color
+            
     def exit_program(self):
         GPIO.output(20, GPIO.LOW)
         GPIO.cleanup()
@@ -139,6 +164,11 @@ class PopupMenu(tk.Menu):
         if color:
             self.parent.alarm_display.config(fg=color)
 
+    def change_alarm_display_brdr_color(self):
+        color = colorchooser.askcolor()[1]
+        if color:
+            self.parent.alarm_display.config(highlightbackground=color)
+
     def custom_snooze_time(self):
         time = simpledialog.askinteger("Snooze Time", "Enter the snooze time in minutes:", parent=self.parent)
         if time:
@@ -150,7 +180,6 @@ class Clock(tk.Tk):
 
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BCM)
-        self.gpio_pin = 20
         GPIO.setup(self.gpio_pin, GPIO.OUT)
         GPIO.output(self.gpio_pin, GPIO.LOW)
 
@@ -170,6 +199,9 @@ class Clock(tk.Tk):
         self.minute_button_fg_color = "purple"
         self.hour_button_brdr_color = "purple"
         self.minute_button_brdr_color = "purple"
+        self.dtdow_color = "purple"
+        self.dtdat_color = "purple"
+        self.dttim_color = "purple"
         self.snooze_time = 5
         self.pin = 20
 
@@ -315,6 +347,16 @@ class Clock(tk.Tk):
             angle = math.radians(i * 30 - 90)
             coord = (center_x + (radius - 30) * math.cos(angle), center_y + (radius - 30) * math.sin(angle))
             self.canvas.create_text(coord[0], coord[1], text=str(i), font=('Arial', int(radius/10), 'bold'), fill=self.numbers_color)
+
+    def draw_date_and_time(self):
+        now = datetime.datetime.now()
+        day_of_week = now.strftime('%A')
+        date = now.strftime('%d %B %Y')
+        time_str = now.strftime('%H:%M:%S')
+        padding = 10
+        self.canvas.create_text(padding, padding, text=day_of_week, anchor='nw', font=('Arial', 20), fill=self.dtdow_color)
+        self.canvas.create_text(padding, padding + 30, text=date, anchor='nw', font=('Arial', 20), fill=self.dtdat_color)
+        self.canvas.create_text(padding, padding + 60, text=time_str, anchor='nw', font=('Arial', 20), fill=self.dttim_color)
 
     # Define a method to update the clock
     def update_clock(self):
