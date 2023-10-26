@@ -14,7 +14,7 @@
 
     >My youngest child is currently potty training. Setting the snooze to 60 minutes and using one of the alarm versions works great as an hourly "potty timer" for her to try using the "big potty". We prefer the GPIO Buzzer, as its a simple sound she recognizes throughout the house.
 
-    >I have a purpose built Raspberry Pi music player with battery backup that has a built in buzzer. This brings portability to the project and makes it great for many things around the house where an alarm clock or timer of sorts may be usefull.
+    >I have a purpose built Raspberry Pi music player with touchscreen and battery backup that has a built in buzzer. This brings portability to the project and makes it great for many things around the house where an alarm clock or timer of sorts may be usefull.
 
 ## Features:
 
