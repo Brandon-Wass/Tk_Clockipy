@@ -164,7 +164,7 @@ class PopupMenu(tk.Menu):
         self.parent.focus_set()
 
     def exit_program(self):
-        GPIO.output(self.parent.pin, GPIO.LOW)
+        GPIO.output(self.parent.gpio_pin, GPIO.LOW)
         GPIO.cleanup()
         self.parent.destroy()
 
