@@ -2,6 +2,20 @@
 
   A simple fullscreen digital clock built with Python's `tkinter` module. Apart from just telling the time, the clock also has a basic alarm feature. There is also a menu full of customization options accessible by left-clicking.
 
+## Why did I make this?
+
+  - This program was made for several reasons
+
+    >I needed a visual clock for my computer station that doesnt require me squinting or wearing my glasses to read the clock in the corner of my screen. I have multiple computers setup across several monitors, so its easy to run one of these programs on of the other computers while I do whatever on my main machine.
+
+    >No more switching out of a fullscreen application to see the time. GAME ON!
+
+    >Both alarm versions work better than ANY alarm I've ever set on any phone I've owned. They actually wake me up! I prefer the GPIO Buzzer version, as the audio file version scares my wife every time it goes off.
+
+    >My youngest child is currently potty training. Setting the snooze to 60 minutes and using one of the alarm versions works great as an hourly "potty timer" for her to try using the "big potty". We prefer the GPIO Buzzer, as its a simple sound she recognizes throughout the house.
+
+    >I have a purpose built Raspberry Pi music player with battery backup that has a built in buzzer. This brings portability to the project and makes it great for many things around the house where an alarm clock or timer of sorts may be usefull.
+
 ## Features:
 
   **3 Versions**:
