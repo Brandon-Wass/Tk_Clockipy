@@ -149,7 +149,6 @@ class PopupMenu(tk.Menu):
         self.parent.focus_set()
 
     def change_gpio_pin(self):
-        GPIO.output(self.parent.gpio_pin, GPIO.LOW)
         gpio_pin = simpledialog.askinteger("GPIO Pin", "Enter a new GPIO pin number:")
         if gpio_pin:
             self.parent.change_gpio_pin(gpio_pin=int)
@@ -165,7 +164,7 @@ class PopupMenu(tk.Menu):
         self.parent.focus_set()
 
     def exit_program(self):
-        GPIO.output(self.parent.gpio_pin, GPIO.LOW)
+        GPIO.output(self.parent.pin, GPIO.LOW)
         GPIO.cleanup()
         self.parent.destroy()
 
@@ -399,7 +398,7 @@ class Clock(tk.Tk):
         self.button_press_time_hour = time.time()
         self.after(2000, self.rapid_increment_hour)
     
-    def stop_hour_increment(self):
+    def stop_hour_increment(self, event):
         if time.time() - self.button_press_time_hour < 2:
             self.increment_alarm_time(0)
         self.button_press_time_hour = None
@@ -407,11 +406,11 @@ class Clock(tk.Tk):
             self.after_cancel(self.scheduled_event_hour)
             self.scheduled_event_hour = None
     
-    def start_minute_increment(self):
+    def start_minute_increment(self, event):
         self.button_press_time_minute = time.time()
         self.after(2000, self.rapid_increment_minute)
     
-    def stop_minute_increment(self):
+    def stop_minute_increment(self, event):
         if time.time() - self.button_press_time_minute < 2:
             self.increment_alarm_time(1)
         self.button_press_time_minute = None
@@ -433,7 +432,7 @@ class Clock(tk.Tk):
                 self.alarm_triggered = True
                 self.show_alarm_popup()
 
-    def destroy_alarm(self):
+    def destroy_alarm(self, event):
         self.alarm_time = None
         self.alarm_triggered = False
         self.alarm_display.config(text="--:--")
@@ -441,7 +440,7 @@ class Clock(tk.Tk):
     def delete_alarm(self):
         self.alarm_triggered = False
 
-    def change_gpio_pin(self):
+    def change_gpio_pin(self, gpio_pin):
         GPIO.cleanup()  # Clean the previous GPIO setup
         GPIO.setup(self.gpio_pin, GPIO.OUT)  # Set the new pin as an output
         GPIO.output(self.gpio_pin, GPIO.LOW)  # Ensure the pin starts off LOW

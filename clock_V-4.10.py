@@ -396,11 +396,11 @@ class Clock(tk.Tk):
         self.scheduled_event_minute = self.after(200, self.rapid_increment_minute)
     
     # Define methods to handle button presses and releases
-    def start_hour_increment(self):
+    def start_hour_increment(self, event):
         self.button_press_time_hour = time.time()
         self.after(2000, self.rapid_increment_hour)
     
-    def stop_hour_increment(self):
+    def stop_hour_increment(self, event):
         if time.time() - self.button_press_time_hour < 2:
             self.increment_alarm_time(0)
         self.button_press_time_hour = None
@@ -408,11 +408,11 @@ class Clock(tk.Tk):
             self.after_cancel(self.scheduled_event_hour)
             self.scheduled_event_hour = None
     
-    def start_minute_increment(self):
+    def start_minute_increment(self, event):
         self.button_press_time_minute = time.time()
         self.after(2000, self.rapid_increment_minute)
     
-    def stop_minute_increment(self):
+    def stop_minute_increment(self, event):
         if time.time() - self.button_press_time_minute < 2:
             self.increment_alarm_time(1)
         self.button_press_time_minute = None
@@ -445,7 +445,7 @@ class Clock(tk.Tk):
         if self.sound_process and self.sound_process.poll() is None:
             self.sound_process.terminate()
 
-    def destroy_alarm(self):
+    def destroy_alarm(self, event):
         self.alarm_time = None
         self.alarm_triggered = False
         self.alarm_display.config(text="--:--")
