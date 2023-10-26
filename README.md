@@ -48,7 +48,7 @@
   3. **Move alarm.wav and image.png files to home directory**: Only for V-4.10 (audio version)
 
     ```
-  mv ~/Alarm_Clock/alarm.wav ~ && mv ~/Alarm_Clock/image.png ~
+    mv ~/Alarm_Clock/alarm.wav ~ && mv ~/Alarm_Clock/image.png ~
     ```
 
 ## How to Use: 
