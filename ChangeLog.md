@@ -1,3 +1,24 @@
+V-4.x0:
+  - Reverted to basic background coloring
+
+    >Background image caused freezes
+
+    >Background is no longer an image but is a solid color
+
+  - Minor changes to code
+
+    >Changing Analog Clock Background now changes background of everything at once
+
+    >Adjusted spacing of marks, numbers, and hands on the analog clock
+
+    >All versions share the exact same base code
+
+    >Reorganized the code flow to make debugging and future changes easier
+
+    >Got rid of any unused code in all versions
+
+----------
+
 V-3.x1:
   - Minor coding patch
 
