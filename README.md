@@ -16,6 +16,12 @@
 
     >I have a purpose built Raspberry Pi music player with touchscreen and battery backup that has a built in buzzer. This brings portability to the project and makes it great for many things around the house where an alarm clock or timer of sorts may be usefull.
 
+      ![IMG_E1034](https://github.com/B-Boone/Alarm_Clock/assets/101531474/7e788587-604b-4c6b-b479-59de09087e31)
+
+      ![IMG_E1035](https://github.com/B-Boone/Alarm_Clock/assets/101531474/d66a21f4-c247-48d6-8f11-58c95c352932)
+
+      >>No, this is not the final design for my Pi project. There will be some custom PCB going into the project to make it more modular. There will also be a 3D printed case in this project's future.
+
 ## Features:
 
   **3 Versions**:
