@@ -43,7 +43,7 @@ class PopupMenu(tk.Menu):
         self.add_cascade(label="Alarm Display Colors", menu=self.alarm)
         self.alarm.add_command(label="Text", command=self.change_alarm_display_fg_color)
         self.add_separator()
-        self.gpio = tk.Menu(self, tearoff=1)
+        self.gpio = tk.Menu(self, tearoff=0)
         self.add_cascade(label="GPIO Pin", menu=self.gpio)
         self.gpio.add_command(label="Change GPIO Pin", command=self.change_gpio_pin)
         self.add_separator()
