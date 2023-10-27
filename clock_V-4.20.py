@@ -49,7 +49,7 @@ class PopupMenu(tk.Menu):
         self.add_separator()
         self.snooze = tk.Menu(self, tearoff=0)
         self.add_cascade(label="Snooze Time", menu=self.snooze)
-        self.snooze.add_command(label="Custom Snooze Time", command=self.change_snooze_time)
+        self.snooze.add_command(label="Change Snooze Time", command=self.change_snooze_time)
         self.add_separator()
         self.add_command(label="Close Menu", command=self.close_menu)
         self.add_command(label="Exit Program", command=self.exit_program)
