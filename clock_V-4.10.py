@@ -192,6 +192,7 @@ class Clock(tk.Tk):
         self.dtdow_color = "purple"
         self.dtdat_color = "purple"
         self.dttim_color = "purple"
+        self.audio_file = 'alarm.wav'
         self.snooze_time = 5
 
         self.attributes('-fullscreen', True)
@@ -208,7 +209,6 @@ class Clock(tk.Tk):
 
         self.popup_menu = PopupMenu(self)
 
-        self.audio_file = 'alarm.wav'  # Default audio file
         self.sound_playing = False
         self.alarm_time = None
         self.sound_process = None
