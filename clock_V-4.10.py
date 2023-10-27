@@ -26,7 +26,7 @@ class PopupMenu(tk.Menu):
         self.clock.add_command(label="Markings", command=self.change_markings_color)
         self.clock.add_command(label="Clock Numbers", command=self.change_numbers_color)
         self.add_separator()
-        self.digital = tk.Menu(self, tearoff=1)
+        self.digital = tk.Menu(self, tearoff=0)
         self.add_cascade(label="Digital Clock Colors", menu=self.digital)
         self.digital.add_command(label="Day of Week", command=self.change_dtdow_color)
         self.digital.add_command(label="Date", command=self.change_dtdat_color)
