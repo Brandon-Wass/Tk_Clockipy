@@ -172,12 +172,6 @@ class Clock(tk.Tk):
     def __init__(self):
         super().__init__()
 
-        GPIO.setwarnings(False)
-        GPIO.setmode(GPIO.BCM)
-        self.gpio_pin = 20
-        GPIO.setup(self.gpio_pin, GPIO.OUT)
-        GPIO.output(self.gpio_pin, GPIO.LOW)
-
         # Colors for different aspects
         self.second_color = "purple"
         self.minute_color = "purple"
@@ -194,6 +188,7 @@ class Clock(tk.Tk):
         self.dtdow_color = "purple"
         self.dtdat_color = "purple"
         self.dttim_color = "purple"
+        self.gpio_pin = 20
         self.snooze_time = 5
 
         self.attributes('-fullscreen', True)
@@ -209,6 +204,11 @@ class Clock(tk.Tk):
         self.canvas.bind("<Button-1>", self.show_menu)
 
         self.popup_menu = PopupMenu(self)
+
+        GPIO.setwarnings(False)
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(self.gpio_pin, GPIO.OUT)
+        GPIO.output(self.gpio_pin, GPIO.LOW)
 
         self.alarm_time = None
         self.alarm_triggered = False
