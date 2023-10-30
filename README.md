@@ -136,7 +136,7 @@ To see the full list of changes made along the way, make sure to check the Chang
 
 ## Possible changes:
 
-  - Currently, there are no planned future changes. I'll update the project as new ideas come or as improvements are identified.
+  - Persistent settings will be added to the Linux based GUI versions
 
 ## Contributing:
 
