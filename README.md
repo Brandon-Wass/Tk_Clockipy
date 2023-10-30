@@ -57,8 +57,8 @@ A simple fullscreen digital clock built with Python's tkinter module. Apart from
   1. **Clone the repository and navigate to the directory**:
 
     ```
-    git clone https://github.com/B-Boone/Alarm_Clock
-    cd Alarm_Clock
+    git clone https://github.com/B-Boone/Clockipy
+    cd Clockipy
     ```
 
   2. **Install dependencies**:
@@ -67,10 +67,10 @@ A simple fullscreen digital clock built with Python's tkinter module. Apart from
     pip3 install tkinter
     ```
 
-  3. **Move alarm.wav and image.png files to home directory**: Only for V-4.10 (audio version)
+  3. **Move alarm.wav file to home directory**: Only for V-4.10 (audio version)
 
     ```
-  mv ~/Alarm_Clock/alarm.wav ~ && mv ~/Alarm_Clock/image.png ~
+  mv ~/Clockipy/alarm.wav ~
     ```
 
 ## How to Use: 
