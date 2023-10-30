@@ -1,3 +1,26 @@
+Introduced headless versions of all 3 codes!
+  - V-4.0.headless
+
+    >Prints the current time to the console
+
+  - V-4.1.headless
+
+    >Currently uses the alarm.wav file exclusively. You may edit the code to use a different audio file
+
+    >Prints the current time to the console once before prompting the user to set the alarm time
+
+      >>Alarm can be stopped by typing the word stop
+
+  - V-4.2.headless
+
+    >Prompts the user to input the GPIO pin number that the buzzer, or LED, is connected to
+
+    >Prints the current time to the console once before prompting the user to set the alarm time
+
+      >>Alarm can be stopped by typing the word stop
+
+----------
+
 V-4.x0:
   - Reverted to basic background coloring
 
