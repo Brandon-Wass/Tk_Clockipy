@@ -1,4 +1,4 @@
-## Introduced headless versions of all 3 codes!
+## Introduced headless versions of all 3 codes! (These versions do not share code with the GUI versions!)
 - V-4.0.headless
 
   - Prints the current time to the console
