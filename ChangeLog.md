@@ -60,11 +60,11 @@
 
   - The color of the text is tied to the clock numbers.
 
-    - This will be patched in a minor update or new version to have its own definitions to be customized seperately.
+    - This will be patched in a minor update or new version to have its own definitions to be customized separately.
 
 ----------
 
-## v-2.X2:
+## v-2.x2:
 
 - Now uses a black 1x1 image file as the background
 
@@ -95,9 +95,9 @@
 
 - Added a menu interface that is accessed by left click full of customization options
 
-- Changed the alarm to a button that can be pressed to reset the alarm
+- Changed the alarm display to a button that can be pressed to reset the alarm
   
-  * This does not stop the alarm
+  - This does not stop the alarm
 
 - Instead of opening a top level window when the alarm rings, an overlay is created with the buttons for stopping the alarm
 
@@ -119,7 +119,7 @@
 
 - Added button hold function to rapidly increase the alarm time
 
-  * Double-clicking in somewhat rapid succession then holding seems to cause the rapid increment to go even faster.
+  - Double-clicking in somewhat rapid succession then holding seems to cause the rapid increment to go even faster.
 
 ----------
 
@@ -143,11 +143,11 @@
 
         - Red button stops the alarm
 
-          * This keeps the previously set alarm
+          - This keeps the previously set alarm
 
         - Green button stops the alarm and resets the alarm display
 
-          * This effectively "shuts off" the alarm feature, and allows a new alarm to be set
+          - This effectively "shuts off" the alarm feature, and allows a new alarm to be set
 
 ----------
 
