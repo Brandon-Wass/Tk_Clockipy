@@ -1,6 +1,6 @@
-# Fullscreen Clock with Alarm
+# Clockipy
 
-A simple fullscreen digital clock built with Python's tkinter module. Apart from just telling the time, the clock offers a variety of features, including a robust alarm function and extensive customization options.
+Clockipy is a versatile clock application, offering various versions with different functionalities. 
 
 ## Why did I make this?
 
@@ -22,116 +22,117 @@ A simple fullscreen digital clock built with Python's tkinter module. Apart from
 
       - No, this is not the final design for my Pi project. There will be some custom PCB going into the project to make it more modular. There will also be a 3D printed case in this project's future.
 
-## Multiple Versions:
+## Directory Overview:
 
-  - V-4.0x: Round clock.
+### `clockipy_for_windows`:
 
-  - V-4.1x: Round clock with audio file alarm. (coded for Linux)
+This directory houses the original inspiration for the program as well as the necessary audio files:
 
-  - V-4.2x: Round clock with GPIO buzzer alarm. (coded for Raspberry Pi)
+- **clockipy_original**: The original version of the program.
+- **clockipy_widget**: A newer version of the original program with persistent settings. This is available as both a `.py` and an `.exe` file.
 
-  - Headless Versions: Non-GUI versions of the clocks, useful for command-line based setups.
+> Note: Future development primarily focuses on the `clockipy_for_linux` directory. While base models (V-x.0x) are compatible with Windows, other versions are Linux exclusive due to coding differences.
+
+### `clockipy_for_linux`:
+
+This directory contains the Linux-specific versions of Clockipy as well as the necessary audio files and icon file.
+
+---
 
 ## Core Features:
 
-  **Fullscreen Clock**: Display time in a frameless window mode.
+- **Fullscreen Clock**: Display time in a frameless window mode.
+- **Interactive**: Click anywhere on the screen to close the application.
+- **Custom Background**: Customize the background with an image of your own.
+- **Set Alarm**: Incremental buttons to set hours and minutes for the alarm.
+- **Visual Alarm**: A pop-up notification appears when the alarm rings.
+- **Stop/Snooze/Reset Alarm**: Buttons to stop and keep the previous alarm, stop and snooze the alarm, or stop and reset the alarm.
 
-  **Interactive**: Click anywhere on the screen to close the application.
+## Recent Updates:
 
-  **Custom Background**: Customize the background with an image of your own.
+### Splitting the Program:
 
-  **Set Alarm**: Incremental buttons to set hours and minutes for the alarm.
+The program has been divided based on the platform:
 
-  **Visual Alarm**: A pop-up notification appears when the alarm rings.
+- **Windows**: 
+  - Original versions can be found in `clockipy_for_windows`.
+  - The directory contains both the original inspiration (`clockipy_original`) and an updated version with persistent settings (`clockipy_widget`).
+  
+- **Linux**:
+  - Development continues in the `clockipy_for_linux` directory.
 
-  **Stop/Snooze/Reset Alarm**: Buttons to stop and keep the previous alarm, stop and snooze the alarm, or stop and reset the alarm.
+### Headless Versions Introduced:
 
-## Prerequisites:
+Versions without a GUI, purely console-based:
 
-  **Python 3.x**
+- **V-4.0.headless**: Displays current time in the console.
+- **V-4.1.headless**: Uses the `alarm.wav` exclusively. Can be edited to use a different audio file. After showing the current time, it prompts users to set an alarm. This alarm can be stopped by typing `stop`.
+- **V-4.2.headless**: Asks users for the GPIO pin number for the buzzer or LED. After showing the current time, it prompts users to set an alarm. This can be stopped by typing `stop`. Rather than keeping the GPIO constantly High, it alternates between High and Low multiple times per second.
 
-  **tkinter** module (typically comes pre-packaged with Python standard distributions).
+### Other Recent Versions:
+
+For a brief overview on what each version introduced or fixed, see below:
+
+- **V-4.x0**: Basic color updates, reorganization of code, background image removal due to freezing issues, etc.
+- **V-3.x1**: Minor code patches, reintroduction of the GPIO version, digital clock customization, etc.
+- **V-3.x0**: Introduced digital date/time, color adjustments, etc.
+- **V-2.x2**: Background adjustments, removal of Raspberry Pi compatibility, etc.
+- **V-2.x1**: Introduction of the snooze button, customization of snooze time, etc.
+- **V-2.x0**: Menu interface addition, alarm display overhaul, program exit changes, etc.
+- **V-1.x3**: Minor code adjustments, loop implementation for alarm sound, reset button color change, etc.
+- **V-1.x2**: Alarm functionalities, button placements, alarm window adjustments, etc.
+- **V-1.x1**: Static button and alarm display locations, alarm message box changes, etc.
+- **V-1.x0**: Initial full-screen release.
+
+To see the full list of changes made along the way, make sure to check the ChangeLog.md
+
+---
 
 ## Installation:
 
-  1. **Clone the repository and navigate to the directory**:
-
-    ```
+1. **Clone the repository and navigate to the directory**:
+    ```bash
     git clone https://github.com/B-Boone/Clockipy
     cd Clockipy
     ```
 
-  2. **Install dependencies**:
-
-    ```
+2. **Install dependencies**:
+    ```bash
     pip3 install tkinter
     ```
 
-  3. **Move alarm.wav file to home directory**: Only for V-4.10 (audio version)
-
-    ```
-  mv ~/Clockipy/alarm.wav ~
-    ```
-
-## How to Use: 
-
-1. **Run the Application**: Make sure to use the correct version number! Check the version number of the file you want to use, as we are now on version number 3.x0!
-
-  V-4.00:
-    ```
-    python3 clockipy_V-4.00.py
+3. **Move alarm.wav file to home directory**: Only for V-4.10 (audio version):
+    ```bash
+    mv ~/Clockipy/alarm.wav ~
     ```
 
-![2023-09-29-112542_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/4300af78-4376-4d57-8db2-e8a3c194d26f)
+# Usage:
 
-  V-4.10
-    ```
-    python3 clockipy_V-4.10.py
-    ```
+## For Windows Users:
 
-![2023-10-03-104239_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/6c2c4981-83bd-4ed7-adcf-7ea2d02f100a)
+### Using Clockipy Widget:
 
-  V-4.20:
-    ```
-    python3 clockipy_V-4.20.py
-    ```
+1. Navigate to the `clockipy_for_windows` directory.
+2. Here, you will find both the `.py` and `.exe` versions of `clockipy_widget`.
+   - For the `.py` version, ensure you have Python installed. Run the script using `python clockipy_widget.py`.
+   - For the `.exe` version, simply double-click the file to run the application.
 
-![2023-10-03-104239_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/6c2c4981-83bd-4ed7-adcf-7ea2d02f100a)
+### Using the Original Clockipy:
 
-  Headless V-4.0:
-    ```
-    python3 clockipy_V-4.0.headless.py
-    ```
+1. In the same `clockipy_for_windows` directory, you can find the `clockipy_original` script.
+2. Run the script using `python clockipy_original.py`.
 
-  Headless V-4.1:
-    ```
-    python3 clockipy_V-4.1.headless.py
-    ```
+> Note: Base models (V-x.0x) within the `clockipy_for_linux` directory will also work on Windows.
 
-  Headless V-4.2:
-    ```
-    python3 clockipy_V-4.2.headless.py
-    ```
+## For Linux Users:
 
-2. **Set the Alarm**: Click the 'Set Hour' and 'Set Minute' buttons to set the alarm.
+1. Navigate to the `clockipy_for_linux` directory.
+2. Depending on your preference, choose the version you want to run.
+3. Run the selected script using `python3 <selected_script_name>.py`.
 
-3. **Alarm Notification**: A pop-up will appear when the alarm rings. Press the stop button to stop the alarm and keep the previoulsy set one, press the snooze button to stop the alarm and have it go off again in 5 minutes*, or press the reset button to stop the alarm and clear the previously set one.
+> Warning: Not all versions in `clockipy_for_linux` are compatible with Windows. Ensure you're using the correct versions if switching between operating systems.
 
-    * This can be adjusted under the left-click popup menu
-    
-![2023-10-11-224403_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/0a88ea53-1ad6-41d6-985b-d287c105d0de)
-
-## Structure:
-
-  **Clock Class**: Inherits from `tk.Tk`.
-
-  - Consists of methods that manage the clock display: drawing the hands, hour marks, and numbers.
-
-  - Manages the alarm check function.
-
-  - Contains the button commands that allow setting the alarm hour and minute.
-
-  - Over the versions, the code structure has been streamlined for easier debugging and future improvements.
+---
 
 ## Possible changes:
 
@@ -143,7 +144,7 @@ A simple fullscreen digital clock built with Python's tkinter module. Apart from
 
 ## License:
 
-  **[Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)**
+This project is licensed under the [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) License.
 
 ---
 
