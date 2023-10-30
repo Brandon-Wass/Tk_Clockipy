@@ -6,7 +6,7 @@ A simple fullscreen digital clock built with Python's tkinter module. Apart from
 
   - This program was made for several reasons
 
-    - I needed a visual clock for my computer station that doesnt require me squinting or wearing my glasses to read the clock in the corner of my screen. I have multiple computers setup across several monitors, so its easy to run one of these programs on of the other computers while I do whatever on my main machine.
+    - I needed a visual clock for my computer station that doesn't require me squinting or wearing my glasses to read the clock in the corner of my screen. I have multiple computers setup across several monitors, so it's easy to run one of these programs on one of the other computers while I do whatever on my main machine.
 
     - No more switching out of a fullscreen application to see the time. GAME ON!
 
@@ -14,7 +14,7 @@ A simple fullscreen digital clock built with Python's tkinter module. Apart from
 
     - My youngest child is currently potty training. Setting the snooze to 60 minutes and using one of the alarm versions works great as an hourly "potty timer" for her to try using the "big potty". We prefer the GPIO Buzzer, as its a simple sound she recognizes throughout the house.
 
-    - I have a purpose built Raspberry Pi music player with touchscreen and battery backup that has a built in buzzer. This brings portability to the project and makes it great for many things around the house where an alarm clock or timer of sorts may be usefull.
+    - I have a purpose built Raspberry Pi music player with touchscreen and battery backup that has a built in buzzer. This brings portability to the project and makes it great for many things around the house where an alarm clock or timer of sorts may be useful.
 
       ![IMG_E1034](https://github.com/B-Boone/Alarm_Clock/assets/101531474/7e788587-604b-4c6b-b479-59de09087e31)
 
@@ -22,7 +22,7 @@ A simple fullscreen digital clock built with Python's tkinter module. Apart from
 
       - No, this is not the final design for my Pi project. There will be some custom PCB going into the project to make it more modular. There will also be a 3D printed case in this project's future.
 
-## Multiple Versions**:
+## Multiple Versions:
 
   - V-4.0x: Round clock.
 
@@ -84,20 +84,31 @@ A simple fullscreen digital clock built with Python's tkinter module. Apart from
 
 ![2023-09-29-112542_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/4300af78-4376-4d57-8db2-e8a3c194d26f)
 
-    V-4.10 & V-4.20:
+    V-4.10
       ```
       python3 clock_V-4.10.py
-      ```
-      python3 clock_V-4.20.py
       ```
 
 ![2023-10-03-104239_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/6c2c4981-83bd-4ed7-adcf-7ea2d02f100a)
 
-  Headless versions:
+    V-4.20:
+      ```
+      python3 clock_V-4.10.py
+      ```
+
+![2023-10-03-104239_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/6c2c4981-83bd-4ed7-adcf-7ea2d02f100a)
+
+  Headless V-4.0:
     ```
     python3 clock_V-4.0.headless.py
     ```
+
+  Headless V-4.1:
+    ```
     python3 clock_V-4.1.headless.py
+    ```
+
+  Headless V-4.2:
     ```
     python3 clock_V-4.2.headless.py
     ```
@@ -126,7 +137,7 @@ A simple fullscreen digital clock built with Python's tkinter module. Apart from
 
 ## Possible changes:
 
-  - I currently have no future changes in mind. This project is at the point where it gets updated when something comes to mind, as I am satisfied with the functionalities provided.
+  - As of now, I have no planned future changes. Updates will be made as and when needed.
 
 ## Contributing:
 
