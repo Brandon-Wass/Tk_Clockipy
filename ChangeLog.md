@@ -64,7 +64,7 @@
 
 ----------
 
-## v-2.x2:
+## V-2.x2:
 
 - Now uses a black 1x1 image file as the background
 
@@ -113,7 +113,7 @@
 
 - Minor code changes
 
-- Implemented loop for alarm sound *V-1.33
+- Implemented loop for alarm sound in V-1.33
 
 - Changed Reset button color to yellow
 
@@ -153,7 +153,7 @@
 
 ## V-1.x1:
 
-- Updated button and alarm display loacations to be static regardless of display size
+- Updated button and alarm display locations to be static regardless of display size
 
 - Redefined the alarm message box to keep the clock running while the dialog alarm message is showing
 
