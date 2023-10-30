@@ -134,7 +134,7 @@ To see the full list of changes made along the way, make sure to check the Chang
 
 ---
 
-## Possible changes:
+## Roadmap to the Future:
 
   - Persistent settings will be added to the Linux based GUI versions
 
