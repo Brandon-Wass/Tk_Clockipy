@@ -237,6 +237,10 @@ class Clock(tk.Tk):
         self.minute_button.bind("<Button-1>", self.start_minute_increment)
         self.minute_button.bind("<ButtonRelease-1>", self.stop_minute_increment)
 
+        # Set the window icon
+        self.icon_image = tk.PhotoImage(file='clockipy.png')
+        self.iconphoto(False, self.icon_image)
+
         self.update_clock()
 
     # Define a method to update the clock

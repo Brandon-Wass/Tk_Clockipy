@@ -134,6 +134,10 @@ class Clock(tk.Tk):
         self.button_press_time_minute = None
         self.scheduled_event_minute = None
 
+        # Set the window icon
+        self.icon_image = tk.PhotoImage(file='clockipy.png')
+        self.iconphoto(False, self.icon_image)
+
         self.update_clock()
 
     # Define a method to update the clock
