@@ -75,7 +75,7 @@ A simple fullscreen digital clock built with Python's tkinter module. Apart from
 
 ## How to Use: 
 
-  1. **Run the Application**: Make sure to use the correct version number! Check the version number of the file you want to use, as we are now on version number 3.x0!
+1. **Run the Application**: Make sure to use the correct version number! Check the version number of the file you want to use, as we are now on version number 3.x0!
 
   V-4.00:
     ```
@@ -113,15 +113,13 @@ A simple fullscreen digital clock built with Python's tkinter module. Apart from
     python3 clock_V-4.2.headless.py
     ```
 
-  2. **Set the Alarm**: Click the 'Set Hour' and 'Set Minute' buttons to set the alarm.
+2. **Set the Alarm**: Click the 'Set Hour' and 'Set Minute' buttons to set the alarm.
 
-  3. **Alarm Notification**: A pop-up will appear when the alarm rings. Press the stop button to stop the alarm and keep the previoulsy set one, press the snooze button to stop the alarm and have it go off again in 5 minutes*, or press the reset button to stop the alarm and clear the previously set one.
+3. **Alarm Notification**: A pop-up will appear when the alarm rings. Press the stop button to stop the alarm and keep the previoulsy set one, press the snooze button to stop the alarm and have it go off again in 5 minutes*, or press the reset button to stop the alarm and clear the previously set one.
 
     * This can be adjusted under the left-click popup menu
     
 ![2023-10-11-224403_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/0a88ea53-1ad6-41d6-985b-d287c105d0de)
-
-  4. **Exit**: Click anywhere on the clock to exit the program.
 
 ## Structure:
 
@@ -137,7 +135,7 @@ A simple fullscreen digital clock built with Python's tkinter module. Apart from
 
 ## Possible changes:
 
-  - As of now, I have no planned future changes. Updates will be made as and when needed.
+  - Currently, there are no planned future changes. I'll update the project as new ideas come or as improvements are identified.
 
 ## Contributing:
 
