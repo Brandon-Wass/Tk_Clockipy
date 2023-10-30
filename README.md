@@ -1,6 +1,6 @@
 # Fullscreen Clock with Alarm
 
-  A simple fullscreen digital clock built with Python's `tkinter` module. Apart from just telling the time, the clock also has a basic alarm feature. There is also a menu full of customization options accessible by left-clicking.
+A simple fullscreen digital clock built with Python's tkinter module. Apart from just telling the time, the clock offers a variety of features, including a robust alarm function and extensive customization options.
 
 ## Why did I make this?
 
@@ -22,15 +22,17 @@
 
       >>No, this is not the final design for my Pi project. There will be some custom PCB going into the project to make it more modular. There will also be a 3D printed case in this project's future.
 
-## Features:
-
-  **3 Versions**:
+## Multiple Versions**:
 
     V-4.0x: Round clock.
 
-    v-4.1x: Round clock with audio file alarm. (coded for Linux)
+    V-4.1x: Round clock with audio file alarm. (coded for Linux)
 
-    v-4.2x: Round clock with GPIO buzzer alarm. (coded for Raspberry Pi)
+    V-4.2x: Round clock with GPIO buzzer alarm. (coded for Raspberry Pi)
+
+    Headless Versions: Non-GUI versions of the clocks, useful for command-line based setups.
+
+## Core Features:
 
   **Fullscreen Clock**: Display time in a frameless window mode.
 
@@ -105,11 +107,17 @@
 
   **Clock Class**: Inherits from `tk.Tk`.
 
-    - Has methods to draw the clock hands, hour marks, numbers, and check the alarm.
+  - Consists of methods that manage the clock display: drawing the hands, hour marks, and numbers.
 
-    - Contains button commands to set the alarm hour and minute.
+  - Manages the alarm check function.
+
+  - Contains the button commands that allow setting the alarm hour and minute.
+
+  - Over the versions, the code structure has been streamlined for easier debugging and future improvements.
 
 ## Possible changes:
+
+  - I currently have no future changes in mind. This project is at the point where it gets updated when something comes to mind, as I am satisfied with the functionalities provided.
 
 ## Contributing:
 
