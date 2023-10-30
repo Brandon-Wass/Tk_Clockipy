@@ -143,7 +143,7 @@ A simple fullscreen digital clock built with Python's tkinter module. Apart from
 
 ## License:
 
-  **[MIT](https://choosealicense.com/licenses/mit/)**
+  **[Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)**
 
 ---
 
