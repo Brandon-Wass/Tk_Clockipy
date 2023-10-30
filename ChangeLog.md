@@ -1,4 +1,23 @@
+## Split the program into two sides
+
+- I've decided to release the original inspiration for this program
+
+  - You will find the original inspiration in the clockipy_for_windows directory (clockipy_original)
+
+    - You will also find a new version of the original inspiration in the same directory (clockipy_widget)
+
+      - The new version has persistent settings and comes in two versions (.py file and .exe file)
+
+- I will be continually working in the clockipy_for_linux directory
+
+  - Windows users beware that the base models (V-x.0x) will also work on your systems
+
+    - Due to the coding in the other versions, they will not work on Windows based systems
+
+----------
+
 ## Introduced headless versions of all 3 codes! (These versions do not share code with their GUI counterparts!)
+
 - V-4.0.headless
 
   - Prints the current time to the console
@@ -24,6 +43,7 @@
 ----------
 
 ## V-4.x0:
+
 - Reverted to basic background coloring
 
   - Background image caused freezes
@@ -45,6 +65,7 @@
 ----------
 
 ## V-3.x1:
+
 - Minor coding patch
 
   - Brought back GPIO version
@@ -56,6 +77,7 @@
 ----------
 
 ## V-3.x0:
+
 - Added digital date and time in top left corner
 
   - The color of the text is tied to the clock numbers.
@@ -163,6 +185,6 @@
 
 ## V-1.x0:
 
-- Original Release
+- Fullscreen first release
 
 ----------

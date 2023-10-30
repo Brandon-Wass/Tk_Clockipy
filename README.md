@@ -79,38 +79,38 @@ A simple fullscreen digital clock built with Python's tkinter module. Apart from
 
   V-4.00:
     ```
-    python3 clock_V-4.00.py
+    python3 clockipy_V-4.00.py
     ```
 
 ![2023-09-29-112542_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/4300af78-4376-4d57-8db2-e8a3c194d26f)
 
   V-4.10
     ```
-    python3 clock_V-4.10.py
+    python3 clockipy_V-4.10.py
     ```
 
 ![2023-10-03-104239_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/6c2c4981-83bd-4ed7-adcf-7ea2d02f100a)
 
   V-4.20:
     ```
-    python3 clock_V-4.20.py
+    python3 clockipy_V-4.20.py
     ```
 
 ![2023-10-03-104239_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/6c2c4981-83bd-4ed7-adcf-7ea2d02f100a)
 
   Headless V-4.0:
     ```
-    python3 clock_V-4.0.headless.py
+    python3 clockipy_V-4.0.headless.py
     ```
 
   Headless V-4.1:
     ```
-    python3 clock_V-4.1.headless.py
+    python3 clockipy_V-4.1.headless.py
     ```
 
   Headless V-4.2:
     ```
-    python3 clock_V-4.2.headless.py
+    python3 clockipy_V-4.2.headless.py
     ```
 
 2. **Set the Alarm**: Click the 'Set Hour' and 'Set Minute' buttons to set the alarm.
