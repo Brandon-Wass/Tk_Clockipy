@@ -19,6 +19,8 @@ Introduced headless versions of all 3 codes!
 
       >>Alarm can be stopped by typing the word stop
 
+    >Instead of setting the GPIO to constantly High when the alarm is to ring, the GPIO is cycled High and Low multiple times a second
+
 ----------
 
 V-4.x0:
