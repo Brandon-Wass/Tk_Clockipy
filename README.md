@@ -93,7 +93,7 @@ A simple fullscreen digital clock built with Python's tkinter module. Apart from
 
   V-4.20:
     ```
-    python3 clock_V-4.10.py
+    python3 clock_V-4.20.py
     ```
 
 ![2023-10-03-104239_1920x1080_scrot](https://github.com/B-Boone/Alarm_Clock/assets/101531474/6c2c4981-83bd-4ed7-adcf-7ea2d02f100a)
