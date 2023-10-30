@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 import time
 import math
 import datetime
@@ -134,8 +135,12 @@ class Clock(tk.Tk):
         self.button_press_time_minute = None
         self.scheduled_event_minute = None
 
+        # Determine the path to the icon
+        script_directory = os.path.dirname(os.path.abspath(__file__))
+        icon_path = os.path.join(script_directory, 'clockipy.png')
+
         # Set the window icon
-        self.icon_image = tk.PhotoImage(file='clockipy.png')
+        self.icon_image = tk.PhotoImage(file=icon_path)
         self.iconphoto(False, self.icon_image)
 
         self.update_clock()
