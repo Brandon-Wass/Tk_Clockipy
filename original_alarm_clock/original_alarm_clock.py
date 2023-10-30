@@ -6,14 +6,6 @@ import time
 import os
 # import RPi.GPIO as GPIO
 
-# Function to find the alarm.wav file
-def find_alarm_file():
-    for root, dirs, files in os.walk('/'):
-        for file in files:
-            if file.endswith('alarm.wav'):
-                return os.path.join(root, file)
-    raise FileNotFoundError("alarm.wav file not found")
-
 # Set the GPIO button pin
 # button_pin = 23
 
