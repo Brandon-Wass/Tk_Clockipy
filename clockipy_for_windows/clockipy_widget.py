@@ -104,7 +104,7 @@ def load_settings():
 alarm_file_path = find_alarm_file()
 
 root = tk.Tk()
-root.title('Alarm Clock')
+root.title('Clockipy Widget')
 root.resizable(False, False)
 root.geometry('250x350')
 

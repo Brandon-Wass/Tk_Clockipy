@@ -37,7 +37,7 @@ pygame.init()
 display_width = 200
 display_height = 600
 game_display = pygame.display.set_mode((display_width,display_height))
-pygame.display.set_caption('Alarm Clock')
+pygame.display.set_caption('Clockipy')
 font_size = 50
 font = pygame.font.SysFont('freesansbold.ttf', font_size)
 stop_font = pygame.font.SysFont('freesansbold.ttf', 24)
