@@ -2,16 +2,22 @@ import tkinter as tk
 from tkinter import messagebox, simpledialog, filedialog
 import time
 import os
+import sys
 import winsound
 from datetime import datetime, timedelta
 import json
+import ctypes
+
+def resource_path(relative_path):
+    """Get the absolute path to the resource in bundled (PyInstaller) mode."""
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
+
+def find_icon_file():
+    return resource_path('clockipy.ico')
 
 def find_alarm_file():
-    for root, dirs, files in os.walk('/'):
-        for file in files:
-            if file.endswith('alarm.wav'):
-                return os.path.join(root, file)
-    raise FileNotFoundError("alarm.wav file not found")
+    return resource_path('alarm.wav')
 
 def change_alarm_sound():
     global alarm_file_path
@@ -83,7 +89,8 @@ def save_settings():
     settings_data = {
         "alarm_file_path": alarm_file_path,
         "snooze_duration": snooze_var.get(),
-        "alarms": alarm_times
+        "alarms": alarm_times,
+        "volume": volume_slider.get()
     }
     with open(SETTINGS_FILE, 'w') as file:
         json.dump(settings_data, file)
@@ -101,6 +108,17 @@ def load_settings():
             for alarm_time in alarm_times:
                 alarm_listbox.insert(tk.END, alarm_time)
 
+            # Set the volume slider's value and adjust the system volume
+            volume_level = settings_data.get("volume", 100)
+            volume_slider.set(volume_level)
+            set_volume(volume_level)
+
+# Function to adjust the volume based on the slider's position
+def set_volume(val):
+    volume = int(val)
+    ctypes.windll.winmm.waveOutSetVolume(0, int(volume * 655.35))
+    save_settings()
+
 alarm_file_path = find_alarm_file()
 
 root = tk.Tk()
@@ -108,11 +126,21 @@ root.title('Clockipy Widget')
 root.resizable(False, False)
 root.geometry('250x350')
 
+# Directory where the script is running
+script_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Use the function
+icon_file_path = find_icon_file()
+if icon_file_path:
+    root.iconbitmap(icon_file_path)
+else:
+    print("Icon file not found!")
+
 # Make sure columns and rows expand
 root.grid_columnconfigure(0, weight=1)  # first column
 root.grid_columnconfigure(1, weight=1)  # second column
 root.grid_columnconfigure(2, weight=1)  # third column
-for i in range(4):  # for 4 rows
+for i in range(5):  # for 4 rows
     root.grid_rowconfigure(i, weight=1)
 
 menu_bar = tk.Menu(root)
@@ -153,10 +181,16 @@ alarm_listbox.grid(row=2, column=0, columnspan=3, sticky='nsew', pady=10, padx=1
 alarm_listbox.bind("<Double-Button-1>", delete_alarm)
 
 stop_button = tk.Button(root, text="Stop Alarm", command=stop_alarm, font=('freesansbold.ttf', 8), bg='red', fg='white')
-stop_button.grid(row=3, column=0, pady=10, padx=10)
+stop_button.grid(row=3, column=0, pady=0, padx=10)
 
 snooze_button = tk.Button(root, text="Snooze", command=snooze_alarm, font=('freesansbold.ttf', 8), bg='blue', fg='white')
-snooze_button.grid(row=3, column=1, pady=10, padx=10)
+snooze_button.grid(row=3, column=1, pady=0, padx=10)
+
+# Volume control slider
+volume_label = tk.Label(root, text="Volume", font=('freesansbold.ttf', 8))
+volume_label.grid(row=4, column=0, pady=5, padx=10)
+volume_slider = tk.Scale(root, from_=0, to=100, orient=tk.HORIZONTAL, command=set_volume)
+volume_slider.grid(row=4, column=1, pady=0, padx=10)
 
 print(os.path.abspath(SETTINGS_FILE))
 
