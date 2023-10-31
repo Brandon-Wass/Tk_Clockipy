@@ -101,7 +101,7 @@ To see the full list of changes made along the way, make sure to check the Chang
     pip3 install tkinter
     ```
 
-3. **Move alarm.wav file to home directory**: Only for V-4.10 (audio version):
+3. **Move alarm.wav file to home directory**: Only for V-4.1x (audio versions):
     ```bash
     mv ~/Clockipy/alarm.wav ~
     ```
