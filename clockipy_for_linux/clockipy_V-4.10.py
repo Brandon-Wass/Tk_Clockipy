@@ -348,7 +348,7 @@ class Clock(tk.Tk):
             self.update_alarm_display()
             self.popup.destroy()
             self.focus_set()
-        self.popup = tk.Toplevel(self, bg="black", cursor="none")  # Create a Toplevel window
+        self.popup = tk.Toplevel(self, bg="black")  # Create a Toplevel window
         self.popup.overrideredirect(True)  # This will make the window frameless
         self.popup.geometry("250x200+{}+{}".format(self.screen_width//2-100, self.screen_height//2-50))  # Adjust the size and position as required
 
